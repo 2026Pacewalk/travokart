@@ -7,6 +7,14 @@ import {
   Phone, Mail, MapPin, Facebook, Instagram, Whatsapp, Youtube,
   Shield, Check, Star, Sparkle, ArrowRight, Chevron,
 } from "./Icons";
+import { PAYMENT_LOGOS } from "./PaymentIcons";
+
+const SOCIALS = [
+  { I: Facebook, href: site.socials.facebook, label: "Facebook" },
+  { I: Instagram, href: site.socials.instagram, label: "Instagram" },
+  { I: Whatsapp, href: site.socials.whatsapp, label: "Whatsapp" },
+  { I: Youtube, href: site.socials.youtube, label: "Youtube" },
+];
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -19,7 +27,7 @@ export default function Footer() {
 
   return (
     <>
-      {/* ---------- Pre-footer CTA / newsletter band ---------- */}
+      {/* ---------- Newsletter CTA band ---------- */}
       <div className="shell">
         <div className="footer-cta">
           <div className="fc-bg">
@@ -69,21 +77,25 @@ export default function Footer() {
         </div>
 
         <div className="shell footer-grid">
-          {/* Brand */}
+          {/* Brand + contact */}
           <div className="col">
             <span className="inline-flex bg-white rounded-xl px-4 py-2.5 mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/brand/logo.png" alt="Travokart" className="h-9 w-auto" />
             </span>
-            <p className="fp" style={{ maxWidth: 260 }}>
-              The Travel &amp; Holidays, has been established by {site.legalName} and we have
-              expanded our International Operations in India (North India).
+            <p className="fp" style={{ maxWidth: 280 }}>
+              The Travel &amp; Holidays, established by {site.legalName} — one of the best travel
+              agencies in Panchkula, with international operations across North India.
             </p>
+            <div className="foot-contacts">
+              <a href={site.phoneHref} className="foot-contact"><span className="fc-ic"><Phone width={16} height={16} /></span> {site.phone}</a>
+              <a href={site.emailHref} className="foot-contact"><span className="fc-ic"><Mail width={16} height={16} /></span> {site.email}</a>
+              <span className="foot-contact"><span className="fc-ic"><MapPin width={16} height={16} /></span> {site.address}</span>
+            </div>
             <div className="socials">
-              <a href={site.socials.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer"><Facebook width={16} height={16} /></a>
-              <a href={site.socials.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer"><Instagram width={16} height={16} /></a>
-              <a href={site.socials.whatsapp} aria-label="Whatsapp" target="_blank" rel="noopener noreferrer"><Whatsapp width={16} height={16} /></a>
-              <a href={site.socials.youtube} aria-label="Youtube" target="_blank" rel="noopener noreferrer"><Youtube width={16} height={16} /></a>
+              {SOCIALS.map(({ I, href, label }) => (
+                <a key={label} href={href} data-net={label} aria-label={label} target="_blank" rel="noopener noreferrer"><I width={17} height={17} /></a>
+              ))}
             </div>
           </div>
 
@@ -91,7 +103,7 @@ export default function Footer() {
           <div className="col">
             <h3>Quick Links</h3>
             {mainNav.filter((m) => !m.label.includes("Packages") && m.label !== "International").map((m) => (
-              <Link key={m.href} href={m.href}>{m.label}</Link>
+              <Link key={m.href} href={m.href}><Chevron width={13} height={13} className="-rotate-90" />{m.label}</Link>
             ))}
           </div>
 
@@ -99,31 +111,49 @@ export default function Footer() {
           <div className="col">
             <h3>Top Destinations</h3>
             {[...footerDomestic.slice(0, 3), ...footerInternational.slice(0, 4)].map((c) => (
-              <Link key={c.slug} href={`/tour_category/${c.slug}`}>{c.label}</Link>
+              <Link key={c.slug} href={`/tour_category/${c.slug}`}><Chevron width={13} height={13} className="-rotate-90" />{c.label}</Link>
             ))}
           </div>
 
-          {/* Contact */}
+          {/* Support */}
           <div className="col">
-            <h3>Get in Touch</h3>
-            <p className="flex items-start gap-2.5"><Phone width={15} height={15} className="mt-0.5 shrink-0 text-brand" /> <a href={site.phoneHref}>{site.phone}</a></p>
-            <p className="flex items-start gap-2.5"><Mail width={15} height={15} className="mt-0.5 shrink-0 text-brand" /> <a href={site.emailHref}>{site.email}</a></p>
-            <p className="flex items-start gap-2.5"><MapPin width={15} height={15} className="mt-0.5 shrink-0 text-brand" /> <span>{site.address}</span></p>
+            <h3>Support</h3>
+            <Link href="/faq"><Chevron width={13} height={13} className="-rotate-90" />FAQs</Link>
+            <Link href="/become-expert"><Chevron width={13} height={13} className="-rotate-90" />Become an Expert</Link>
+            <Link href="/sign-in"><Chevron width={13} height={13} className="-rotate-90" />Sign In</Link>
+            <Link href="/privcy-policy"><Chevron width={13} height={13} className="-rotate-90" />Privacy Policy</Link>
+            <Link href="/terms-conditions"><Chevron width={13} height={13} className="-rotate-90" />Terms &amp; Conditions</Link>
+          </div>
+        </div>
+
+        {/* Payment strip */}
+        <div className="footer-pay">
+          <div className="shell">
+            <span className="pay-label">💳 We Accept</span>
+            <div className="pay-badges">
+              {PAYMENT_LOGOS.map((Logo, i) => (
+                <span className="pay-badge" key={i}><Logo /></span>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="footer-bottom">
-          <div className="shell" style={{ justifyContent: "space-between" }}>
+          <div className="shell">
             <span>
               © 2025 Travokart Tour and Travel. Developed by{" "}
               <a href="https://pacewalk.com" target="_blank" rel="noopener noreferrer" className="font-bold text-[color:var(--brand)] hover:underline">
                 PACEWALK
               </a>
             </span>
-            <button className="to-top" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <Chevron width={18} height={18} className="rotate-180" />
-            </button>
+            <div className="footer-legal">
+              <Link href="/privcy-policy">Privacy</Link>
+              <Link href="/terms-conditions">Terms</Link>
+              <button className="to-top" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+                <Chevron width={18} height={18} className="rotate-180" />
+              </button>
+            </div>
           </div>
         </div>
       </footer>
