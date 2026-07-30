@@ -85,6 +85,12 @@ export function blogsWithImages(): Blog[] {
   return blogs.filter((b) => b.featured_image);
 }
 
+/** Normalise raw WordPress usernames into a clean author name. */
+export function authorName(raw: string | null | undefined): string {
+  if (!raw || /user|travokart2025|admin|wp[-_]?admin/i.test(raw)) return "Travokart Team";
+  return raw;
+}
+
 /** Rewrite WordPress upload URLs inside an HTML string to the local /media path. */
 export function rewriteHtml(html: string): string {
   if (!html) return "";

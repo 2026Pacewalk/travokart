@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Blog } from "@/lib/types";
-import { mediaUrl, readTime, formatDate } from "@/lib/data";
+import { mediaUrl, readTime, formatDate, authorName } from "@/lib/data";
 import { Calendar, Clock, ArrowRight, User } from "./Icons";
 
 export default function BlogCard({ blog }: { blog: Blog }) {
@@ -15,7 +15,7 @@ export default function BlogCard({ blog }: { blog: Blog }) {
       <div className="blog-card-body">
         <div className="blog-meta">
           <span><Calendar width={13} height={13} /> {formatDate(blog.date)}</span>
-          {blog.author && <span><User width={13} height={13} /> {blog.author}</span>}
+          <span><User width={13} height={13} /> {authorName(blog.author)}</span>
         </div>
         <h3 className="blog-title">{blog.title}</h3>
         {blog.excerpt && <p className="blog-excerpt">{blog.excerpt.replace(/\[&hellip;\]|\[…\]/g, "…")}</p>}

@@ -225,7 +225,7 @@ export default async function TourPage({
             <p className="text-white/85 text-sm mt-1">
               Our experts will tailor this trip to your dates, budget and travel style.
             </p>
-            <Link href="/contact-us" className="btn bg-white text-sky-dark w-full mt-4">Enquire Now</Link>
+            <Link href="/contact-us" className="btn w-full mt-4" style={{ background: "#fff", color: "var(--sky-dark)" }}>Enquire Now</Link>
           </div>
         </aside>
       </section>

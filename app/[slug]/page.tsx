@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { blogs, blogBySlug, mediaUrl, rewriteHtml, readTime, formatDate } from "@/lib/data";
+import { blogs, blogBySlug, mediaUrl, rewriteHtml, readTime, formatDate, authorName } from "@/lib/data";
 import { site } from "@/lib/site";
 import BlogCard from "@/components/BlogCard";
 import { Calendar, Clock, ArrowRight, Chevron, Facebook, Whatsapp, Mail, Sparkle } from "@/components/Icons";
@@ -59,8 +59,8 @@ export default async function BlogPostPage({
             <h1 className="article-title">{blog.title}</h1>
             <div className="article-meta">
               <span>
-                <span className="am-av">{(blog.author || "T").charAt(0)}</span>
-                {blog.author || "Travokart"}
+                <span className="am-av">{authorName(blog.author).charAt(0)}</span>
+                {authorName(blog.author)}
               </span>
               <span><Calendar width={16} height={16} /> {formatDate(blog.date)}</span>
               <span><Clock width={16} height={16} /> {readTime(blog.content)} min read</span>
@@ -90,10 +90,10 @@ export default async function BlogPostPage({
 
             {/* Author card */}
             <div className="author-card mt-8">
-              <span className="ac-av">{(blog.author || "T").charAt(0)}</span>
+              <span className="ac-av">{authorName(blog.author).charAt(0)}</span>
               <div>
                 <div className="text-[color:var(--muted)] text-xs font-semibold uppercase tracking-wide">Written by</div>
-                <div className="font-extrabold text-[color:var(--ink)] text-lg">{blog.author || "Travokart Team"}</div>
+                <div className="font-extrabold text-[color:var(--ink)] text-lg">{authorName(blog.author)}</div>
                 <p className="text-[color:var(--muted)] text-sm mt-1">Travel experts at Travokart, sharing tips and inspiration to make your journeys unforgettable.</p>
               </div>
             </div>

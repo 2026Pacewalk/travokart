@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { blogsWithImages, mediaUrl, readTime, formatDate } from "@/lib/data";
+import { blogsWithImages, mediaUrl, readTime, formatDate, authorName } from "@/lib/data";
 import PageHero from "@/components/PageHero";
 import BlogsExplorer from "@/components/BlogsExplorer";
 import { Calendar, Clock, User, ArrowRight } from "@/components/Icons";
@@ -40,7 +40,7 @@ export default function BlogsPage() {
               <div className="blog-meta mb-5">
                 <span><Calendar width={14} height={14} /> {formatDate(featured.date)}</span>
                 <span><Clock width={14} height={14} /> {readTime(featured.content)} min read</span>
-                {featured.author && <span><User width={14} height={14} /> {featured.author}</span>}
+                <span><User width={14} height={14} /> {authorName(featured.author)}</span>
               </div>
               <span className="btn btn-primary w-fit">Read Full Story <ArrowRight width={17} height={17} /></span>
             </div>
