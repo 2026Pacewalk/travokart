@@ -1,41 +1,41 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Travelora | Explore More. Worry Less.",
+  metadataBase: new URL("https://travokart.com"),
+  title: {
+    default: "Travokart | Explore Exclusive Tour Packages",
+    template: "%s | Travokart",
+  },
   description:
-    "Discover handpicked destinations, exclusive travel deals, hotels, flights, and unforgettable holiday packages with Travelora.",
+    "Travokart is a travel marketplace linking travellers with handpicked domestic and international tour packages — comfortable, affordable and unforgettable.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+  },
   other: {
     "codex-preview": "development",
-  },
-  icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${jakarta.variable} antialiased`}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

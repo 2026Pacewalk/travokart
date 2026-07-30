@@ -1,0 +1,142 @@
+[
+    {
+        "slug": "andaman-islands",
+        "name": "Andaman Islands",
+        "description": "",
+        "count": 6,
+        "image": null
+    },
+    {
+        "slug": "bali",
+        "name": "Bali",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "domestic",
+        "name": "Domestic",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "dubai",
+        "name": "Dubai",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "goa",
+        "name": "Goa",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "himachal",
+        "name": "Himachal",
+        "description": "",
+        "count": 6,
+        "image": null
+    },
+    {
+        "slug": "hong-kong",
+        "name": "Hong Kong",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "international",
+        "name": "International",
+        "description": "",
+        "count": 0,
+        "image": null
+    },
+    {
+        "slug": "kerala",
+        "name": "Kerala",
+        "description": "",
+        "count": 6,
+        "image": null
+    },
+    {
+        "slug": "ladakh",
+        "name": "Ladakh",
+        "description": "",
+        "count": 6,
+        "image": null
+    },
+    {
+        "slug": "maldives",
+        "name": "Maldives",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "mauritius",
+        "name": "Mauritius",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "more-packages",
+        "name": "More Packages",
+        "description": "",
+        "count": 1,
+        "image": null
+    },
+    {
+        "slug": "new-zealand",
+        "name": "New Zealand",
+        "description": "",
+        "count": 2,
+        "image": null
+    },
+    {
+        "slug": "rajasthan",
+        "name": "Rajasthan",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "seychelles",
+        "name": "Seychelles",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "sikkim",
+        "name": "Sikkim",
+        "description": "",
+        "count": 6,
+        "image": null
+    },
+    {
+        "slug": "singapore",
+        "name": "Singapore",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "sri-lanka",
+        "name": "Sri Lanka",
+        "description": "",
+        "count": 3,
+        "image": null
+    },
+    {
+        "slug": "thailand",
+        "name": "Thailand",
+        "description": "",
+        "count": 3,
+        "image": null
+    }
+]
