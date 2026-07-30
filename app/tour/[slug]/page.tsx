@@ -14,7 +14,7 @@ import {
 import { site } from "@/lib/site";
 import PageHero from "@/components/PageHero";
 import TourCard from "@/components/TourCard";
-import { MapPin, Clock, Users, Check, XMark, Star, Phone, ArrowRight, Sparkle } from "@/components/Icons";
+import { MapPin, Clock, Users, Check, XMark, Star, Phone, ArrowRight, Sparkle, Whatsapp } from "@/components/Icons";
 
 export function generateStaticParams() {
   return tours.map((t) => ({ slug: t.slug }));
@@ -49,6 +49,17 @@ export default async function TourPage({
   const related = (cat ? toursInCategory(cat.slug) : tours)
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 4);
+
+  // Pre-filled WhatsApp enquiry so the admin instantly knows the request.
+  const waMessage =
+    `Hi Travokart! 👋 I'd like to enquire about this tour package:\n\n` +
+    `🌴 Tour: ${tour.title}\n` +
+    (place ? `📍 Location: ${place}\n` : "") +
+    (duration ? `🗓️ Duration: ${duration}\n` : "") +
+    (price ? `💰 Price: From ${price} per person\n` : "") +
+    `🔗 https://travokart.com/tour/${tour.slug}\n\n` +
+    `Please share availability and booking details. Thank you!`;
+  const waHref = `https://wa.me/919872889763?text=${encodeURIComponent(waMessage)}`;
 
   return (
     <>
@@ -211,7 +222,10 @@ export default async function TourPage({
                 </li>
               )}
             </ul>
-            <a href={site.phoneHref} className="btn btn-primary w-full mt-6">
+            <a href={waHref} target="_blank" rel="noopener noreferrer" className="btn w-full mt-6" style={{ background: "#25d366", color: "#fff", boxShadow: "0 10px 22px rgba(37,211,102,.32)" }}>
+              <Whatsapp width={19} height={19} /> Book on WhatsApp
+            </a>
+            <a href={site.phoneHref} className="btn btn-primary w-full mt-3">
               Book This Tour <ArrowRight width={18} height={18} />
             </a>
             <a href={site.phoneHref} className="btn btn-outline w-full mt-3">
