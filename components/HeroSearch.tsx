@@ -6,9 +6,6 @@ import { Plane, MapPin, Calendar, Clock, Users, Search } from "./Icons";
 
 const TABS = [
   { key: "Tours", icon: "tours" },
-  { key: "Hotels", icon: "hotels" },
-  { key: "Flights", icon: "flights" },
-  { key: "Activities", icon: "activities" },
 ] as const;
 
 export default function HeroSearch() {
