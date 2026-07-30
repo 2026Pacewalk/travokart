@@ -64,6 +64,28 @@ export const Shield = (p: P) => (
 export const Sparkle = (p: P) => (
   <svg {...base(p)}><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z" /></svg>
 );
+export const User = (p: P) => (
+  <svg {...base(p)}><path d="M20 21a8 8 0 0 0-16 0" /><circle cx="12" cy="7" r="4" /></svg>
+);
+export const AtSign = (p: P) => (
+  <svg {...base(p)}><circle cx="12" cy="12" r="4" /><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94" /></svg>
+);
+export const Lock = (p: P) => (
+  <svg {...base(p)}><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+);
+export const Eye = (p: P) => (
+  <svg {...base(p)}><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></svg>
+);
+export const Briefcase = (p: P) => (
+  <svg {...base(p)}><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+);
+export const TrendingUp = (p: P) => (
+  <svg {...base(p)}><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></svg>
+);
+export const Wallet = (p: P) => (
+  <svg {...base(p)}><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h16v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5" /><path d="M18 12a1 1 0 0 0 0 2h3v-2Z" fill="currentColor" stroke="none" /></svg>
+);
+
 export const Facebook = (p: P) => (
   <svg {...base({ fill: "currentColor", stroke: "none", ...p })}><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" /></svg>
 );

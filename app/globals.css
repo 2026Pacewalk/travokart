@@ -198,6 +198,10 @@ button, input, select { font: inherit; }
 @keyframes fadeUp { from { opacity:0; transform: translateY(18px);} to { opacity:1; transform: translateY(0);} }
 .fade-up { animation: fadeUp .6s ease both; }
 
+/* ---- Bare input used inside icon field wrappers ---- */
+.tk-input { border: 0; outline: 0; background: transparent; width: 100%; min-width: 0; font-size: 14px; font-weight: 500; color: var(--ink); }
+.tk-input::placeholder { color: #9aa7ba; font-weight: 400; }
+
 /* ---- Blog prose ---- */
 .prose-tk { color: var(--color-charcoal); line-height: 1.75; }
 .prose-tk h1,.prose-tk h2,.prose-tk h3,.prose-tk h4 { color: var(--ink); font-weight: 800; line-height: 1.25; margin: 1.6em 0 .6em; }
