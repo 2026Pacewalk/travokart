@@ -48,8 +48,10 @@ export default function BecomeExpertPage() {
             <img src="/media/2025/12/maldives-2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, rgba(28,36,48,.92), rgba(224,125,26,.78))" }} />
             <div className="relative h-full flex flex-col p-9 text-white">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/brand/logo-light.png" alt="Travokart" className="h-11 w-auto" />
+              <span className="inline-flex bg-white rounded-xl px-4 py-2.5 shadow-lg w-fit">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/brand/logo.png" alt="Travokart" className="h-9 w-auto" />
+              </span>
               <div className="mt-10">
                 <span className="inline-flex items-center gap-2 bg-white/15 border border-white/25 px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-widest">
                   {role === "agent" ? "Partner Program" : "Member Access"}

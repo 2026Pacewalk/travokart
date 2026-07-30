@@ -8,8 +8,10 @@ export default function Footer() {
       <div className="shell footer-grid">
         {/* Brand */}
         <div className="col">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/logo-light.png" alt="Travokart" className="brand-logo" />
+          <span className="inline-flex bg-white rounded-xl px-4 py-2.5 mb-4">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/logo.png" alt="Travokart" className="h-9 w-auto" />
+          </span>
           <p className="fp" style={{ maxWidth: 260 }}>
             The Travel &amp; Holidays, has been established by {site.legalName} and we have
             expanded our International Operations in India (North India).
