@@ -58,8 +58,19 @@ export function categoryBySlug(slug: string): Category | undefined {
   return categories.find((c) => c.slug === slug);
 }
 
+/** Parent category -> its child destination slugs (from the WordPress taxonomy). */
+export const CATEGORY_CHILDREN: Record<string, string[]> = {
+  domestic: ["andaman-islands", "goa", "himachal", "kerala", "ladakh", "rajasthan", "sikkim"],
+  international: [
+    "bali", "dubai", "hong-kong", "maldives", "mauritius", "more-packages",
+    "new-zealand", "seychelles", "singapore", "sri-lanka", "thailand",
+  ],
+};
+
+/** Tours in a category, rolling up child categories for parents (domestic/international). */
 export function toursInCategory(slug: string): Tour[] {
-  return tours.filter((t) => t.categories?.some((c) => c.slug === slug));
+  const slugs = new Set([slug, ...(CATEGORY_CHILDREN[slug] || [])]);
+  return tours.filter((t) => t.categories?.some((c) => slugs.has(c.slug)));
 }
 
 export function blogBySlug(slug: string): Blog | undefined {
