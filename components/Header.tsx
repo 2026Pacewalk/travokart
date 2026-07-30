@@ -244,18 +244,10 @@ function MobileDrawer({ onClose, isActive }: { onClose: () => void; isActive: (h
 
         {/* Footer */}
         <div className="drawer-foot">
-          <div className="drawer-actions">
-            <a href={site.phoneHref} className="drawer-action call"><span className="aic"><Phone width={16} height={16} /></span> Call</a>
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="drawer-action wa"><span className="aic"><Whatsapp width={16} height={16} /></span> WhatsApp</a>
-            <a href={site.emailHref} className="drawer-action mail"><span className="aic"><Mail width={16} height={16} /></span> Email</a>
-          </div>
-          <div className="drawer-cta">
-            <Link href="/sign-in" className="btn btn-outline w-full" onClick={onClose}>Sign In</Link>
-            <Link href="/become-expert" className="btn btn-primary w-full" onClick={onClose}>Register</Link>
-          </div>
+          <p className="drawer-follow">Follow us on</p>
           <div className="drawer-socials">
             {SOCIALS.map(({ I, href, label }) => (
-              <a key={label} href={href} aria-label={label}><I width={17} height={17} /></a>
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} data-net={label}><I width={18} height={18} /></a>
             ))}
           </div>
         </div>
