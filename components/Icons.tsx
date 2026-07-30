@@ -86,6 +86,22 @@ export const Wallet = (p: P) => (
   <svg {...base(p)}><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h16v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5" /><path d="M18 12a1 1 0 0 0 0 2h3v-2Z" fill="currentColor" stroke="none" /></svg>
 );
 
+export const Info = (p: P) => (
+  <svg {...base(p)}><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
+);
+export const Compass = (p: P) => (
+  <svg {...base(p)}><circle cx="12" cy="12" r="10" /><path d="m16.2 7.8-2.9 6.3-6.3 2.9 2.9-6.3 6.3-2.9z" /></svg>
+);
+export const Image = (p: P) => (
+  <svg {...base(p)}><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" /></svg>
+);
+export const Newspaper = (p: P) => (
+  <svg {...base(p)}><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2" /><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z" /></svg>
+);
+export const Headset = (p: P) => (
+  <svg {...base(p)}><path d="M4 14a8 8 0 0 1 16 0" /><path d="M4 14v3a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 1ZM20 14v3a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 1Z" /></svg>
+);
+
 export const Facebook = (p: P) => (
   <svg {...base({ fill: "currentColor", stroke: "none", ...p })}><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z" /></svg>
 );

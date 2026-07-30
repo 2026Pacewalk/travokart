@@ -7,7 +7,17 @@ import { site, mainNav, footerDomestic, footerInternational } from "@/lib/site";
 import {
   Phone, Mail, Menu, Close, Chevron, Shield, Check, Star, Search, ArrowRight,
   Facebook, Instagram, Whatsapp, Youtube,
+  Info, Compass, Image as ImageIcon, Newspaper, MapPin, Plane,
 } from "./Icons";
+
+const WHATSAPP = "https://wa.me/919872889763";
+const NAV_ICONS: Record<string, React.ComponentType<{ width?: number; height?: number }>> = {
+  "About Us": Info,
+  "Tours": Compass,
+  "Gallery": ImageIcon,
+  "Blogs": Newspaper,
+  "Contact Us": Phone,
+};
 
 const POPULAR = ["Himachal", "Bali", "Dubai", "Goa", "Maldives", "Thailand", "Kerala", "Ladakh"];
 const SOCIALS = [
@@ -150,57 +160,98 @@ function MobileDrawer({ onClose, isActive }: { onClose: () => void; isActive: (h
     <>
       <div className="drawer-backdrop" onClick={onClose} />
       <aside className="drawer" role="dialog" aria-label="Menu">
+        {/* Gradient header */}
         <div className="drawer-head">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/brand/logo.png" alt="Travokart" className="h-9 w-auto" />
-          <button className="drawer-close" aria-label="Close menu" onClick={onClose}><Close width={20} height={20} /></button>
+          <div className="dh-bg" />
+          <div className="drawer-head-row">
+            <span className="drawer-logo-chip">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/brand/logo.png" alt="Travokart" className="h-8 w-auto" />
+            </span>
+            <button className="drawer-close" aria-label="Close menu" onClick={onClose}><Close width={20} height={20} /></button>
+          </div>
+          <div className="drawer-welcome">
+            <h4>Welcome to Travokart 👋</h4>
+            <p>Where would you like to travel today?</p>
+          </div>
         </div>
 
-        <div className="drawer-body">
-          <form className="drawer-search" onSubmit={(e) => { e.preventDefault(); onClose(); router.push("/tours"); }}>
+        <div className="drawer-body drawer-stagger">
+          {/* Search */}
+          <form className="drawer-search" style={{ animationDelay: "40ms" }} onSubmit={(e) => { e.preventDefault(); onClose(); router.push("/tours"); }}>
             <Search width={18} height={18} className="text-[color:var(--muted)]" />
-            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search destinations…" />
+            <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search destinations, tours…" />
           </form>
 
-          {mainNav.map((item) => {
+          {/* Quick tiles */}
+          <div className="drawer-tiles" style={{ animationDelay: "80ms" }}>
+            <Link href="/tours" className="drawer-tile t1" onClick={onClose}>
+              <span className="tile-ic"><Compass width={20} height={20} /></span> Explore Tours
+            </Link>
+            <Link href="/contact-us" className="drawer-tile t2" onClick={onClose}>
+              <span className="tile-ic"><Phone width={19} height={19} /></span> Contact Us
+            </Link>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="drawer-tile t3" onClick={onClose}>
+              <span className="tile-ic"><Whatsapp width={20} height={20} /></span> WhatsApp
+            </a>
+          </div>
+
+          <p className="drawer-label" style={{ animationDelay: "120ms" }}>Browse</p>
+
+          {mainNav.map((item, i) => {
+            const delay = { animationDelay: `${140 + i * 40}ms` };
             if (item.label === "Domestic Packages" || item.label === "International") {
               const items = item.label === "Domestic Packages" ? footerDomestic : footerInternational;
               const isOpen = acc === item.label;
+              const AccIcon = item.label === "International" ? Plane : MapPin;
               return (
-                <div key={item.label}>
+                <div key={item.label} style={delay}>
                   <button className={`drawer-acc-btn ${isOpen ? "open" : ""}`} onClick={() => setAcc(isOpen ? null : item.label)}>
+                    <span className="nav-ic"><AccIcon width={18} height={18} /></span>
                     {item.label}
                     <Chevron width={18} height={18} className="chev" />
                   </button>
                   <div className={`drawer-sub ${isOpen ? "open" : ""}`}>
                     <div>
-                      {items.map((it) => (
-                        <Link key={it.slug} href={`/tour_category/${it.slug}`} onClick={onClose}>
-                          <span className="dot" /> {it.label}
-                        </Link>
-                      ))}
+                      <div className="drawer-chips">
+                        {items.map((it) => (
+                          <Link key={it.slug} href={`/tour_category/${it.slug}`} onClick={onClose}>{it.label}</Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             }
+            const Ic = NAV_ICONS[item.label] || Compass;
             return (
-              <Link key={item.label} href={item.href} className={`drawer-link ${isActive(item.href) ? "active" : ""}`} onClick={onClose}>
+              <Link key={item.label} href={item.href} className={`drawer-link ${isActive(item.href) ? "active" : ""}`} style={delay} onClick={onClose}>
+                <span className="nav-ic"><Ic width={18} height={18} /></span>
                 {item.label}
-                <ArrowRight width={16} height={16} className="text-[color:var(--brand)]" />
+                <ArrowRight width={16} height={16} className="arr" />
               </Link>
             );
           })}
+
+          {/* Promo card */}
+          <div className="drawer-promo" style={{ animationDelay: "440ms" }}>
+            <span className="dp-badge">✦ Partner Program</span>
+            <h5>Become a Travel Expert</h5>
+            <p>List your packages & reach thousands of travellers.</p>
+            <Link href="/become-expert" onClick={onClose}>Join Now <ArrowRight width={14} height={14} /></Link>
+          </div>
         </div>
 
+        {/* Footer */}
         <div className="drawer-foot">
-          <div className="drawer-contact">
-            <a href={site.phoneHref}><span className="ic"><Phone width={15} height={15} /></span> {site.phone}</a>
-            <a href={site.emailHref}><span className="ic"><Mail width={15} height={15} /></span> {site.email}</a>
+          <div className="drawer-actions">
+            <a href={site.phoneHref} className="drawer-action call"><span className="aic"><Phone width={16} height={16} /></span> Call</a>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="drawer-action wa"><span className="aic"><Whatsapp width={16} height={16} /></span> WhatsApp</a>
+            <a href={site.emailHref} className="drawer-action mail"><span className="aic"><Mail width={16} height={16} /></span> Email</a>
           </div>
-          <div className="grid grid-cols-2 gap-2.5">
+          <div className="drawer-cta">
             <Link href="/sign-in" className="btn btn-outline w-full" onClick={onClose}>Sign In</Link>
-            <Link href="/become-expert" className="btn btn-primary w-full" onClick={onClose}>Become Expert</Link>
+            <Link href="/become-expert" className="btn btn-primary w-full" onClick={onClose}>Register</Link>
           </div>
           <div className="drawer-socials">
             {SOCIALS.map(({ I, href, label }) => (
