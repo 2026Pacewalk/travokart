@@ -86,6 +86,9 @@ export const Wallet = (p: P) => (
   <svg {...base(p)}><path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h16v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5" /><path d="M18 12a1 1 0 0 0 0 2h3v-2Z" fill="currentColor" stroke="none" /></svg>
 );
 
+export const Heart = (p: P) => (
+  <svg {...base(p)}><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8Z" /></svg>
+);
 export const Info = (p: P) => (
   <svg {...base(p)}><circle cx="12" cy="12" r="10" /><path d="M12 16v-4M12 8h.01" /></svg>
 );

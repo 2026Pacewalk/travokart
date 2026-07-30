@@ -1,65 +1,103 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { Tour } from "@/lib/types";
 import { tourImage, formatPrice, durationLabel } from "@/lib/data";
-import { MapPin, Clock, Star, ArrowRight } from "./Icons";
+import { MapPin, Clock, Users, Star, ArrowRight, Heart, Whatsapp } from "./Icons";
 
-export default function TourCard({ tour }: { tour: Tour }) {
+const WISHLIST_KEY = "tk_wishlist";
+
+export default function TourCard({ tour, trending = true }: { tour: Tour; trending?: boolean }) {
   const price = formatPrice(tour.product_price || tour.price);
   const duration = durationLabel(tour);
-  const place = tour.city || tour.destination || tour.categories?.[0]?.name || "";
+  const place = [...new Set([tour.city, tour.destination].filter(Boolean))][0] || tour.categories?.[0]?.name || "";
   const cat = tour.categories?.[0]?.name;
+  const guests = tour.people_limit;
+
+  const [saved, setSaved] = useState(false);
+  useEffect(() => {
+    try {
+      const list: string[] = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]");
+      setSaved(list.includes(tour.slug));
+    } catch {}
+  }, [tour.slug]);
+
+  function toggleSave(e: React.MouseEvent) {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      const list: string[] = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]");
+      const next = list.includes(tour.slug) ? list.filter((s) => s !== tour.slug) : [...list, tour.slug];
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(next));
+      setSaved(next.includes(tour.slug));
+    } catch {}
+  }
+
+  const waMsg =
+    `Hi Travokart! I'd like to enquire about this tour package.\n\n` +
+    `Tour: ${tour.title}\n` +
+    (place ? `Location: ${place}\n` : "") +
+    (duration ? `Duration: ${duration}\n` : "") +
+    (price ? `Price: From ${price} per person\n` : "") +
+    `Link: https://travokart.com/tour/${tour.slug}\n\n` +
+    `Please share availability and booking details. Thank you!`;
+  const waHref = `https://wa.me/919872889763?text=${encodeURIComponent(waMsg)}`;
 
   return (
-    <Link
-      href={`/tour/${tour.slug}`}
-      className="group card-lift block bg-white rounded-2xl overflow-hidden border border-line shadow-[var(--shadow-soft)]"
-    >
-      <div className="relative h-52 overflow-hidden">
+    <article className="tour-card">
+      <div className="tc-media">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={tourImage(tour)}
-          alt={tour.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
-        {cat && (
-          <span className="absolute top-3 left-3 bg-white/95 text-brand-dark text-[11px] font-bold px-3 py-1 rounded-full">
-            {cat}
-          </span>
-        )}
-        <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-ink/80 text-white text-[11px] font-semibold px-2.5 py-1 rounded-full">
-          <Star width={11} height={11} className="text-brand" /> 5.0
-        </span>
-      </div>
-
-      <div className="p-4">
-        {place && (
-          <div className="flex items-center gap-1.5 text-muted text-xs mb-1.5">
-            <MapPin width={13} height={13} className="text-accent" /> {place}
-          </div>
-        )}
-        <h3 className="font-bold text-[15px] text-ink leading-snug clamp-2 min-h-[42px] group-hover:text-brand-dark transition-colors">
-          {tour.title}
-        </h3>
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-line">
-          <div>
-            {duration && (
-              <div className="flex items-center gap-1 text-muted text-[11px] mb-0.5">
-                <Clock width={12} height={12} /> {duration}
-              </div>
-            )}
-            {price && (
-              <div className="text-[11px] text-muted">
-                From <span className="text-brand-dark font-extrabold text-base">{price}</span>
-              </div>
-            )}
-          </div>
-          <span className="grid place-items-center w-9 h-9 rounded-full bg-brand-soft text-brand-dark group-hover:bg-brand group-hover:text-white transition-colors">
-            <ArrowRight width={16} height={16} />
-          </span>
+        <img src={tourImage(tour)} alt={tour.title} loading="lazy" />
+        <div className="tc-top">
+          {trending && <span className="tc-trend"><Star width={12} height={12} /> Trending</span>}
+          <button
+            className={`tc-heart ${saved ? "active" : ""}`}
+            onClick={toggleSave}
+            aria-label={saved ? "Remove from wishlist" : "Save to wishlist"}
+            aria-pressed={saved}
+          >
+            <Heart width={17} height={17} />
+          </button>
+        </div>
+        <div className="tc-chips">
+          {cat && <span className="tc-cat">{cat}</span>}
+          <span className="tc-rate"><Star width={11} height={11} /> 5.0</span>
         </div>
       </div>
-    </Link>
+
+      <div className="tc-body">
+        {place && <span className="tc-loc"><MapPin width={13} height={13} /> {place}</span>}
+        <h3 className="tc-title">{tour.title}</h3>
+
+        <div className="tc-stats">
+          {duration && <span className="tc-stat"><Clock width={14} height={14} /> {duration}</span>}
+          {guests && <span className="tc-stat"><Users width={14} height={14} /> {guests} Guests</span>}
+        </div>
+
+        <div className="tc-foot">
+          <div className="tc-price">
+            {price ? (
+              <>
+                <small>Starts from</small>
+                <span className="amt">{price}</span> <span className="per">/person</span>
+              </>
+            ) : (
+              <span className="amt">On Request</span>
+            )}
+          </div>
+          <div className="tc-actions">
+            <a className="tc-wa" href={waHref} target="_blank" rel="noopener noreferrer" aria-label="Enquire on WhatsApp">
+              <Whatsapp width={18} height={18} />
+            </a>
+            <Link className="tc-view" href={`/tour/${tour.slug}`} aria-label="View tour">
+              <ArrowRight width={18} height={18} />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <Link href={`/tour/${tour.slug}`} className="tc-stretch" aria-label={tour.title} />
+    </article>
   );
 }
