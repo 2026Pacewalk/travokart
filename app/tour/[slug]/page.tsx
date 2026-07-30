@@ -44,20 +44,21 @@ export default async function TourPage({
   const duration = durationLabel(tour);
   const itinerary = getItinerary(tour);
   const gallery = tour.gallery.slice(0, 6).map(mediaUrl);
-  const place = [tour.city, tour.state].filter(Boolean).join(", ") || tour.destination;
+  const place = [...new Set([tour.city, tour.state].filter(Boolean))].join(", ") || tour.destination;
   const cat = tour.categories?.[0];
   const related = (cat ? toursInCategory(cat.slug) : tours)
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 4);
 
   // Pre-filled WhatsApp enquiry so the admin instantly knows the request.
+  // Plain text (no emojis) to render reliably across all devices.
   const waMessage =
-    `Hi Travokart! 👋 I'd like to enquire about this tour package:\n\n` +
-    `🌴 Tour: ${tour.title}\n` +
-    (place ? `📍 Location: ${place}\n` : "") +
-    (duration ? `🗓️ Duration: ${duration}\n` : "") +
-    (price ? `💰 Price: From ${price} per person\n` : "") +
-    `🔗 https://travokart.com/tour/${tour.slug}\n\n` +
+    `Hi Travokart! I'd like to enquire about this tour package.\n\n` +
+    `Tour: ${tour.title}\n` +
+    (place ? `Location: ${place}\n` : "") +
+    (duration ? `Duration: ${duration}\n` : "") +
+    (price ? `Price: From ${price} per person\n` : "") +
+    `Link: https://travokart.com/tour/${tour.slug}\n\n` +
     `Please share availability and booking details. Thank you!`;
   const waHref = `https://wa.me/919872889763?text=${encodeURIComponent(waMessage)}`;
 
