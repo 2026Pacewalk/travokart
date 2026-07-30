@@ -345,13 +345,15 @@ button, input, select { font: inherit; }
 .footer > * { position: relative; z-index: 1; }
 .footer-grid { padding: 54px 0 40px; display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.3fr; gap: 44px; }
 .footer .brand-logo { height: 44px; margin-bottom: 18px; }
-.footer h3 { color: #fff; font-size: 14px; font-weight: 700; margin: 0 0 16px; }
+.footer h3 { color: #fff; font-size: 15px; font-weight: 800; margin: 0 0 18px; position: relative; padding-bottom: 12px; }
+.footer h3::after { content: ""; position: absolute; left: 0; bottom: 0; width: 34px; height: 2px; background: linear-gradient(90deg, var(--brand), var(--sky)); border-radius: 2px; }
 .footer li, .footer p.fp { list-style: none; }
-.footer .col p { display: block; font-size: 13.5px; color: rgba(255,255,255,.72); margin: 10px 0; }
-.footer .col a:not(.foot-contact) { position: relative; display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: rgba(255,255,255,.72); margin: 9px 0; padding-left: 0; transition: color .18s, padding-left .18s; }
-.footer .col a:not(.foot-contact)::before { content: ""; width: 0; height: 1.5px; background: var(--brand); border-radius: 2px; transition: width .22s ease; }
-.footer .col a:not(.foot-contact):hover { color: #fff; }
-.footer .col a:not(.foot-contact):hover::before { width: 14px; }
+.footer .col p.fp { display: block; font-size: 13.5px; color: rgba(255,255,255,.66); margin: 0; line-height: 1.65; }
+.footer-links { display: flex; flex-direction: column; }
+.footer-links a { display: flex; align-items: center; gap: 9px; padding: 7px 0; font-size: 13.5px; color: rgba(255,255,255,.66); transition: color .16s ease, transform .16s ease; }
+.footer-links a .lchev { color: var(--brand); flex: 0 0 auto; opacity: .55; transition: transform .16s ease, opacity .16s ease; }
+.footer-links a:hover { color: #fff; transform: translateX(4px); }
+.footer-links a:hover .lchev { transform: translateX(3px); opacity: 1; }
 
 /* Contact block in brand column */
 .foot-contacts { margin-top: 18px; display: grid; gap: 12px; }

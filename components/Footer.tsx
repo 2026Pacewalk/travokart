@@ -102,27 +102,37 @@ export default function Footer() {
           {/* Quick links */}
           <div className="col">
             <h3>Quick Links</h3>
-            {mainNav.filter((m) => !m.label.includes("Packages") && m.label !== "International").map((m) => (
-              <Link key={m.href} href={m.href}><Chevron width={13} height={13} className="-rotate-90" />{m.label}</Link>
-            ))}
+            <nav className="footer-links">
+              {mainNav.filter((m) => !m.label.includes("Packages") && m.label !== "International").map((m) => (
+                <Link key={m.href} href={m.href}><Chevron width={13} height={13} className="lchev -rotate-90" />{m.label}</Link>
+              ))}
+            </nav>
           </div>
 
           {/* Destinations */}
           <div className="col">
             <h3>Top Destinations</h3>
-            {[...footerDomestic.slice(0, 3), ...footerInternational.slice(0, 4)].map((c) => (
-              <Link key={c.slug} href={`/tour_category/${c.slug}`}><Chevron width={13} height={13} className="-rotate-90" />{c.label}</Link>
-            ))}
+            <nav className="footer-links">
+              {[...footerDomestic.slice(0, 3), ...footerInternational.slice(0, 4)].map((c) => (
+                <Link key={c.slug} href={`/tour_category/${c.slug}`}><Chevron width={13} height={13} className="lchev -rotate-90" />{c.label}</Link>
+              ))}
+            </nav>
           </div>
 
           {/* Support */}
           <div className="col">
             <h3>Support</h3>
-            <Link href="/faq"><Chevron width={13} height={13} className="-rotate-90" />FAQs</Link>
-            <Link href="/become-expert"><Chevron width={13} height={13} className="-rotate-90" />Become an Expert</Link>
-            <Link href="/sign-in"><Chevron width={13} height={13} className="-rotate-90" />Sign In</Link>
-            <Link href="/privcy-policy"><Chevron width={13} height={13} className="-rotate-90" />Privacy Policy</Link>
-            <Link href="/terms-conditions"><Chevron width={13} height={13} className="-rotate-90" />Terms &amp; Conditions</Link>
+            <nav className="footer-links">
+              {[
+                { href: "/faq", label: "FAQs" },
+                { href: "/become-expert", label: "Become an Expert" },
+                { href: "/sign-in", label: "Sign In" },
+                { href: "/privcy-policy", label: "Privacy Policy" },
+                { href: "/terms-conditions", label: "Terms & Conditions" },
+              ].map((l) => (
+                <Link key={l.href} href={l.href}><Chevron width={13} height={13} className="lchev -rotate-90" />{l.label}</Link>
+              ))}
+            </nav>
           </div>
         </div>
 
