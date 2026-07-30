@@ -1,16 +1,11 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Plane, MapPin, Calendar, Clock, Users, Search } from "./Icons";
 
-const TABS = [
-  { key: "Tours", icon: "tours" },
-] as const;
-
 export default function HeroSearch() {
   const router = useRouter();
-  const [active, setActive] = useState("Tours");
 
   function submit(e: FormEvent) {
     e.preventDefault();
@@ -19,18 +14,12 @@ export default function HeroSearch() {
 
   return (
     <form className="search-card" onSubmit={submit}>
-      <div className="search-tabs" role="tablist">
-        {TABS.map((t) => (
-          <button
-            type="button"
-            key={t.key}
-            className={active === t.key ? "active" : ""}
-            onClick={() => setActive(t.key)}
-          >
-            <span className={`tab-icon ${t.icon}`}><Plane width={16} height={16} /></span>
-            {t.key}
-          </button>
-        ))}
+      <div className="search-hook">
+        <span className="search-hook-ic"><Plane width={18} height={18} /></span>
+        <div className="search-hook-text">
+          <strong>Your Next Adventure Awaits ✨</strong>
+          <span>Search 66+ handpicked tour packages across India &amp; the world</span>
+        </div>
       </div>
       <div className="search-fields">
         <label>

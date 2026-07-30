@@ -66,6 +66,25 @@ export function blogBySlug(slug: string): Blog | undefined {
   return blogs.find((b) => b.slug === slug);
 }
 
+/** Estimated reading time in minutes from HTML content. */
+export function readTime(html: string): number {
+  const words = (html || "").replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(2, Math.round(words / 200));
+}
+
+/** Format an ISO date (YYYY-MM-DD) as "Sep 30, 2025". */
+export function formatDate(iso: string): string {
+  const [y, m, d] = (iso || "").split("-").map(Number);
+  if (!y) return iso;
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return `${months[(m || 1) - 1]} ${d}, ${y}`;
+}
+
+/** Blogs that have a usable feature image, newest first. */
+export function blogsWithImages(): Blog[] {
+  return blogs.filter((b) => b.featured_image);
+}
+
 /** Rewrite WordPress upload URLs inside an HTML string to the local /media path. */
 export function rewriteHtml(html: string): string {
   if (!html) return "";
