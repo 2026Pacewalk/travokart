@@ -66,10 +66,12 @@ export default function ContactPage() {
 
           <div className="rounded-2xl overflow-hidden border border-line h-full min-h-[420px]">
             <iframe
-              title="Travokart location"
-              src="https://www.google.com/maps?q=Sector%2014%20Panchkula%20Haryana&output=embed"
+              title="Explore Travokart Vocations LLP location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3431.2599345922094!2d76.845535!3d30.682961799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f95a23529b1bb%3A0x4e76b35ca8de755!2sExplore%20travokart%20vocations%20LLP!5e0!3m2!1sen!2sin!4v1785482136229!5m2!1sen!2sin"
               className="w-full h-full min-h-[420px]"
               loading="lazy"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
         </div>

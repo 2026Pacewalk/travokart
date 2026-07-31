@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import SectionHeading from "@/components/SectionHeading";
-import { whyChoose, homeStats } from "@/lib/content";
+import { whyChoose, homeStats, homeFaqs } from "@/lib/content";
 import { site } from "@/lib/site";
+import Faq from "@/components/Faq";
 import { Sparkle, Calendar, Plane, Shield, Check, ArrowRight } from "@/components/Icons";
 
 const featureIcons = { sparkle: Sparkle, calendar: Calendar, plane: Plane, shield: Shield };
@@ -37,31 +38,36 @@ export default function AboutPage() {
           />
           <div className="text-muted leading-relaxed mt-4 space-y-4">
             <p>
-              The Explore Travokart Vocations LLP Travels &amp; Holidays has been officially
-              settled by Explore Travokart Vocations LLP Management Pvt Ltd. By providing our
-              clients top-notch services and exclusive deals in Holiday Packages (Domestic as
-              well as International) with Flight Bookings, we are one of the best service
-              providers in India.
+              Explore Travokart Vocations LLP is a customer-centric travel company serving
+              Tricity &amp; North India, committed to delivering seamless, memorable, and
+              well-organized travel experiences. With a strong focus on quality, reliability, and
+              customer satisfaction, we specialize in offering thoughtfully curated domestic and
+              international tour packages designed to suit diverse travel needs. Whether it&apos;s
+              leisure travel, family vacations, romantic getaways, or group tours, we ensure every
+              journey is planned with precision, comfort, and care.
             </p>
             <p>
-              Now we are counted among the best travel agency in Panchkula because of our finest
-              services. We link travellers with carefully chosen tour packages designed to be
-              comfortable, affordable and unforgettable.
+              Backed by an experienced team of travel professionals, Explore Travokart Vocations
+              LLP collaborates with trusted partners to provide end-to-end travel solutions,
+              including accommodation, sightseeing, transportation, and customized itineraries. Our
+              approach is rooted in transparency, competitive pricing, and personalized service,
+              ensuring our clients enjoy stress-free travel experiences from planning to
+              completion. At Explore Travokart Vocations LLP, we strive to turn every trip into a
+              rewarding and unforgettable experience.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4 mt-6">
+          <div className="grid sm:grid-cols-2 gap-3 mt-6">
             {[
-              { t: "Convenient Locations", d: "Simple options for pick-up and drop-off make traveling hassle-free." },
-              { t: "Customer-Centric Service", d: "Amiable assistance to help you at every stage of the process." },
-            ].map((x) => (
-              <div key={x.t} className="flex gap-3">
-                <span className="grid place-items-center w-9 h-9 rounded-full bg-sky-soft text-sky-dark shrink-0">
-                  <Check width={16} height={16} />
+              "Domestic & International Packages",
+              "End-to-End Travel Solutions",
+              "Transparent & Competitive Pricing",
+              "Customized Itineraries",
+            ].map((t) => (
+              <div key={t} className="flex items-center gap-2.5">
+                <span className="grid place-items-center w-7 h-7 rounded-full bg-sky-soft text-sky-dark shrink-0">
+                  <Check width={15} height={15} />
                 </span>
-                <div>
-                  <div className="font-bold text-ink text-sm">{x.t}</div>
-                  <div className="text-muted text-xs mt-0.5">{x.d}</div>
-                </div>
+                <span className="font-semibold text-ink text-sm">{t}</span>
               </div>
             ))}
           </div>
@@ -96,6 +102,20 @@ export default function AboutPage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-cloud">
+        <div className="container-tk py-16 grid lg:grid-cols-[0.85fr_1.15fr] gap-10">
+          <div>
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Frequently Asked Questions"
+              subtitle="All the information you require on Travokart travel services, destinations, and trips."
+            />
+          </div>
+          <Faq items={homeFaqs} />
         </div>
       </section>
 

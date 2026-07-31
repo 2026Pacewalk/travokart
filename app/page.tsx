@@ -5,10 +5,9 @@ import { homeFaqs, testimonials, homeStats } from "@/lib/content";
 import HeroSearch from "@/components/HeroSearch";
 import TourCard from "@/components/TourCard";
 import Faq from "@/components/Faq";
-import NewsletterForm from "@/components/NewsletterForm";
 import {
   Plane, ArrowRight, Star, Shield, Check, Clock, Calendar,
-  Sparkle, Users, ArrowRight as Arr,
+  Sparkle, Users, ArrowRight as Arr, GoogleG,
 } from "@/components/Icons";
 
 export default function Home() {
@@ -150,37 +149,52 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------------- REVIEWS + NEWSLETTER ---------------- */}
+      {/* ---------------- GOOGLE REVIEWS ---------------- */}
       <section className="shell section">
         <div className="section-head section-center" style={{ display: "block", textAlign: "center" }}>
           <span className="eyebrow-line">Testimonials</span>
           <h2>What Our Travelers Say</h2>
-          <p style={{ marginInline: "auto" }}>Explore Travokart Vocations LLP — rated 5.0 based on 12 Google reviews.</p>
         </div>
-        <div className="reviews-grid">
-          {testimonials.slice(0, 3).map((r) => (
-            <article className="review-card" key={r.name}>
-              <div className="stars" style={{ marginTop: 0 }}>★★★★★</div>
-              <p>{r.text}</p>
-              <div className="review-person">
-                <span className="review-avatar">{r.name.charAt(0)}</span>
-                <div><strong>{r.name}</strong><small>{r.when}</small></div>
+
+        {/* Google summary */}
+        <div className="google-summary">
+          <div className="gs-left">
+            <GoogleG width={40} height={40} />
+            <div>
+              <strong>Explore Travokart Vocations LLP</strong>
+              <div className="gs-rate">
+                <span className="gs-score">5.0</span>
+                <span className="stars">★★★★★</span>
+                <span className="gs-count">Based on 12 reviews</span>
               </div>
+            </div>
+          </div>
+          <a
+            href="https://www.google.com/maps/search/Explore%20travokart%20vocations%20LLP"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-outline gs-btn"
+          >
+            <GoogleG width={16} height={16} /> Review us on Google
+          </a>
+        </div>
+
+        {/* Real Google reviews */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
+          {testimonials.map((r) => (
+            <article className="review-card gr-card" key={r.name}>
+              <div className="gr-head">
+                <span className="review-avatar">{r.name.charAt(0)}</span>
+                <div className="gr-person">
+                  <strong>{r.name}</strong>
+                  <small>{r.when}</small>
+                </div>
+                <GoogleG width={20} height={20} className="gr-g" />
+              </div>
+              <div className="stars" style={{ marginTop: 10 }}>★★★★★</div>
+              <p>{r.text}</p>
             </article>
           ))}
-          <article className="newsletter-card">
-            <div className="nl-bg">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/media/2025/12/bali-1.jpg" alt="" />
-            </div>
-            <div className="nl-ov" />
-            <div className="newsletter-content">
-              <span>Members-only savings</span>
-              <h3>Get Exclusive Offers &amp; Travel Inspiration</h3>
-              <p>Subscribe to our newsletter</p>
-              <NewsletterForm />
-            </div>
-          </article>
         </div>
       </section>
 
