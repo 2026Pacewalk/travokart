@@ -5,7 +5,15 @@ import { Phone, Mail, MapPin } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with Travokart — call, email or visit us in Panchkula, Haryana.",
+  description:
+    "Get in touch with Travokart — call +91 98728-89763, email info@travokart.com, or visit us at Sector-14, Panchkula, Haryana. Our travel experts are here to help.",
+  alternates: { canonical: "/contact-us" },
+  openGraph: {
+    title: "Contact Travokart",
+    description: "Call, email or visit Explore Travokart Vocations LLP in Panchkula, Haryana.",
+    url: "/contact-us",
+    images: [{ url: "/media/2025/12/bora-bora-pics.jpg", alt: "Contact Travokart" }],
+  },
 };
 
 export default function ContactPage() {

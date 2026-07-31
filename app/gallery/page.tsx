@@ -4,7 +4,15 @@ import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "A glimpse of the destinations and experiences we craft at Travokart.",
+  description:
+    "A glimpse of the beautiful destinations and travel experiences we craft for our travellers at Travokart.",
+  alternates: { canonical: "/gallery" },
+  openGraph: {
+    title: "Travokart Gallery",
+    description: "A glimpse of the destinations and experiences we craft at Travokart.",
+    url: "/gallery",
+    images: [{ url: "/media/2025/12/bali-1.jpg", alt: "Travokart travel gallery" }],
+  },
 };
 
 export default function GalleryPage() {

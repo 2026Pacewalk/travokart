@@ -1,14 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const metadata: Metadata = { title: "Sign In" };
+export const metadata: Metadata = {
+  title: "Sign In",
+  description: "Sign in to your Travokart account to manage your tour bookings and enquiries.",
+  alternates: { canonical: "/sign-in" },
+};
 
 export default function SignInPage() {
   return (
     <section className="relative min-h-[70vh] grid place-items-center py-16">
       <div className="absolute inset-0 -z-10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/media/2025/12/maldives-2.jpg" alt="" className="w-full h-full object-cover" />
+        <img src="/media/2025/12/maldives-2.jpg" alt="Maldives holiday destination" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-ink/80" />
       </div>
       <div className="w-[min(420px,calc(100%-32px))] bg-white rounded-2xl shadow-[var(--shadow-card)] p-8">

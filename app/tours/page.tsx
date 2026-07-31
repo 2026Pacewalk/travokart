@@ -6,7 +6,15 @@ import TourCard from "@/components/TourCard";
 
 export const metadata: Metadata = {
   title: "All Tour Packages",
-  description: "Browse all domestic and international tour packages from Travokart.",
+  description:
+    "Browse all domestic and international tour packages from Travokart — 66+ handpicked holidays across India and the world, comfortable, affordable and unforgettable.",
+  alternates: { canonical: "/tours" },
+  openGraph: {
+    title: "All Tour Packages | Travokart",
+    description: "Browse 66+ handpicked domestic and international tour packages from Travokart.",
+    url: "/tours",
+    images: [{ url: "/media/2025/12/thailand-2.jpg", alt: "Travokart tour packages" }],
+  },
 };
 
 export default function ToursPage() {

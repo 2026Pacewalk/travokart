@@ -22,7 +22,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-bg">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/2025/12/bora-bora-pics.jpg" alt="" />
+          <img src="/media/2025/12/bora-bora-pics.jpg" alt="Bora Bora tropical island — explore exclusive tour packages with Travokart" />
         </div>
         <div className="hero-overlay" />
         <div className="shell hero-inner">
@@ -223,7 +223,7 @@ export default function Home() {
       <section className="shell" style={{ paddingBottom: 8 }}>
         <div className="relative rounded-3xl overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/2025/12/mauritius-1.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <img src="/media/2025/12/mauritius-1.jpg" alt="Mauritius beach holiday — plan your next adventure with Travokart" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, rgba(28,36,48,.92), rgba(224,125,26,.7))" }} />
           <div className="relative px-8 py-14 md:px-16 text-white text-center">
             <Sparkle width={30} height={30} className="mx-auto mb-3 text-white" />

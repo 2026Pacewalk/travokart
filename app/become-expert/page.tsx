@@ -45,7 +45,7 @@ export default function BecomeExpertPage() {
           {/* ---------- Brand panel ---------- */}
           <div className="relative hidden lg:block">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/media/2025/12/maldives-2.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+            <img src="/media/2025/12/maldives-2.jpg" alt="Join Travokart as a travel expert partner" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0" style={{ background: "linear-gradient(160deg, rgba(28,36,48,.92), rgba(224,125,26,.78))" }} />
             <div className="relative h-full flex flex-col p-9 text-white">
               <span className="inline-flex bg-white rounded-xl px-4 py-2.5 shadow-lg w-fit">

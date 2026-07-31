@@ -28,7 +28,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const tour = tourBySlug(slug);
   if (!tour) return { title: "Tour" };
-  return { title: tour.title, description: tour.excerpt?.slice(0, 160) };
+  const desc =
+    (tour.excerpt?.slice(0, 155) ||
+      `Book the ${tour.title} tour package with Travokart.`).replace(/\s+\S*$/, "") + "…";
+  const img = tourImage(tour);
+  const path = `/tour/${tour.slug}`;
+  return {
+    title: `${tour.title} Tour Package`,
+    description: desc,
+    alternates: { canonical: path },
+    openGraph: { title: tour.title, description: desc, url: path, type: "article", images: [{ url: img, alt: tour.title }] },
+    twitter: { title: tour.title, description: desc, images: [img] },
+  };
 }
 
 export default async function TourPage({

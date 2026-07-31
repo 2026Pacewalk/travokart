@@ -7,7 +7,15 @@ import { Calendar, Clock, User, ArrowRight } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Travel Blog",
-  description: "Travel tips, destination guides and inspiration from the Travokart team.",
+  description:
+    "Travel tips, destination guides and inspiration from the Travokart team to help you plan your next unforgettable journey.",
+  alternates: { canonical: "/blogs" },
+  openGraph: {
+    title: "Travokart Travel Blog",
+    description: "Travel tips, destination guides and inspiration from the Travokart team.",
+    url: "/blogs",
+    images: [{ url: "/media/2025/12/bali-1.jpg", alt: "Travokart travel blog" }],
+  },
 };
 
 export default function BlogsPage() {

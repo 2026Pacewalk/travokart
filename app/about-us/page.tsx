@@ -11,7 +11,15 @@ const featureIcons = { sparkle: Sparkle, calendar: Calendar, plane: Plane, shiel
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about Explore Travokart Vocations LLP — one of the best travel agencies in Panchkula.",
+  description:
+    "Explore Travokart Vocations LLP is a customer-centric travel company serving Tricity & North India, offering curated domestic and international tour packages with end-to-end travel solutions.",
+  alternates: { canonical: "/about-us" },
+  openGraph: {
+    title: "About Travokart",
+    description: "A customer-centric travel company serving Tricity & North India with curated tour packages.",
+    url: "/about-us",
+    images: [{ url: "/media/2025/12/maldives-2.jpg", alt: "About Explore Travokart Vocations LLP" }],
+  },
 };
 
 export default function AboutPage() {
@@ -27,9 +35,9 @@ export default function AboutPage() {
       <section className="container-tk py-16 grid lg:grid-cols-2 gap-12 items-center">
         <div className="grid grid-cols-2 gap-4">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/2025/12/thailand-2.jpg" alt="" className="rounded-2xl h-72 w-full object-cover shadow-[var(--shadow-card)]" />
+          <img src="/media/2025/12/thailand-2.jpg" alt="Thailand tour package by Travokart" className="rounded-2xl h-72 w-full object-cover shadow-[var(--shadow-card)]" />
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/2025/12/bali-1.jpg" alt="" className="rounded-2xl h-72 w-full object-cover mt-8 shadow-[var(--shadow-card)]" />
+          <img src="/media/2025/12/bali-1.jpg" alt="Bali holiday package by Travokart" className="rounded-2xl h-72 w-full object-cover mt-8 shadow-[var(--shadow-card)]" />
         </div>
         <div>
           <SectionHeading

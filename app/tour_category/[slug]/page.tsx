@@ -17,9 +17,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const cat = categoryBySlug(slug);
   if (!cat) return { title: "Category" };
+  const count = toursInCategory(slug).length;
+  const desc =
+    cat.description ||
+    `Explore ${count}+ handpicked ${cat.name} tour packages with Travokart — comfortable, affordable and unforgettable holidays.`;
+  const img = categoryImage(cat);
+  const path = `/tour_category/${cat.slug}`;
   return {
     title: `${cat.name} Tour Packages`,
-    description: cat.description || `Explore ${cat.name} tour packages with Travokart.`,
+    description: desc,
+    alternates: { canonical: path },
+    openGraph: { title: `${cat.name} Tour Packages`, description: desc, url: path, images: [{ url: img, alt: `${cat.name} tour packages` }] },
+    twitter: { title: `${cat.name} Tour Packages`, description: desc, images: [img] },
   };
 }
 

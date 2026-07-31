@@ -4,6 +4,7 @@ import LegalPage, { type LegalSection } from "@/components/LegalPage";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "The terms and conditions governing bookings and use of Explore Travokart Vocations LLP services.",
+  alternates: { canonical: "/terms-conditions" },
 };
 
 const sections: LegalSection[] = [

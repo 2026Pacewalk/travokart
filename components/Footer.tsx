@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="footer-cta">
           <div className="fc-bg">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/media/2025/12/maldives-2.jpg" alt="" />
+            <img src="/media/2025/12/maldives-2.jpg" alt="Travokart exclusive travel offers" />
           </div>
           <div className="fc-ov" />
           <div className="footer-cta-inner">

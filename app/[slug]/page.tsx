@@ -18,7 +18,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const blog = blogBySlug(slug);
   if (!blog) return { title: "Not Found" };
-  return { title: blog.title, description: blog.excerpt?.slice(0, 160) };
+  const desc = (blog.excerpt || "").replace(/\[&hellip;\]|\[…\]/g, "").slice(0, 160).trim();
+  const img = mediaUrl(blog.featured_image);
+  const path = `/${blog.slug}`;
+  return {
+    title: blog.title,
+    description: desc,
+    alternates: { canonical: path },
+    openGraph: {
+      title: blog.title,
+      description: desc,
+      url: path,
+      type: "article",
+      publishedTime: blog.date,
+      authors: [blog.author],
+      images: [{ url: img, alt: blog.title }],
+    },
+    twitter: { title: blog.title, description: desc, images: [img] },
+  };
 }
 
 export default async function BlogPostPage({

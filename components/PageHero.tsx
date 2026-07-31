@@ -17,7 +17,7 @@ export default function PageHero({
       <div className="absolute inset-0">
         {image ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img src={image} alt="" className="w-full h-full object-cover" />
+          <img src={image} alt={title} className="w-full h-full object-cover" />
         ) : (
           <div className="w-full h-full bg-ink" />
         )}
