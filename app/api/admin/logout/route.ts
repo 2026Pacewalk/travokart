@@ -1,8 +1,8 @@
-import { clearCookie } from "@/lib/auth";
+import { clearCookie, isSecureRequest } from "@/lib/auth";
 
-export async function POST() {
+export async function POST(request: Request) {
   return new Response(JSON.stringify({ ok: true }), {
     status: 200,
-    headers: { "Content-Type": "application/json", "Set-Cookie": clearCookie() },
+    headers: { "Content-Type": "application/json", "Set-Cookie": clearCookie(isSecureRequest(request)) },
   });
 }

@@ -84,9 +84,16 @@ export async function verifySession(token: string | undefined | null): Promise<s
   }
 }
 
-export function sessionCookie(token: string): string {
-  return `${SESSION_COOKIE}=${token}; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=${SESSION_TTL}`;
+export function sessionCookie(token: string, secure = true): string {
+  return `${SESSION_COOKIE}=${token}; Path=/; HttpOnly; SameSite=Lax;${secure ? " Secure;" : ""} Max-Age=${SESSION_TTL}`;
 }
-export function clearCookie(): string {
-  return `${SESSION_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Secure; Max-Age=0`;
+export function clearCookie(secure = true): string {
+  return `${SESSION_COOKIE}=; Path=/; HttpOnly; SameSite=Lax;${secure ? " Secure;" : ""} Max-Age=0`;
+}
+export function isSecureRequest(request: Request): boolean {
+  try {
+    return new URL(request.url).protocol === "https:";
+  } catch {
+    return false;
+  }
 }

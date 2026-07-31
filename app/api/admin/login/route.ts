@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { ensureDb } from "@/db/ensure";
 import { admins } from "@/db/schema";
-import { verifyPassword, createSession, sessionCookie } from "@/lib/auth";
+import { verifyPassword, createSession, sessionCookie, isSecureRequest } from "@/lib/auth";
 
 export async function POST(request: Request) {
   try {
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const token = await createSession(admin.email);
     return new Response(JSON.stringify({ ok: true }), {
       status: 200,
-      headers: { "Content-Type": "application/json", "Set-Cookie": sessionCookie(token) },
+      headers: { "Content-Type": "application/json", "Set-Cookie": sessionCookie(token, isSecureRequest(request)) },
     });
   } catch (error) {
     return Response.json({ ok: false, error: error instanceof Error ? error.message : "Server error" }, { status: 500 });
