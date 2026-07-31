@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import ContactForm from "@/components/ContactForm";
 import { site } from "@/lib/site";
 import { Phone, Mail, MapPin } from "@/components/Icons";
 
@@ -53,23 +54,7 @@ export default function ContactPage() {
           <div className="bg-white rounded-2xl border border-line p-7 shadow-[var(--shadow-soft)]">
             <h2 className="text-2xl font-extrabold text-ink mb-1">Send Us a Message</h2>
             <p className="text-muted text-sm mb-6">We&apos;ll get back to you within 24 hours.</p>
-            <form className="grid gap-4">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <Input label="Full Name" placeholder="Your name" />
-                <Input label="Phone" placeholder="+91 00000 00000" />
-              </div>
-              <Input label="Email" placeholder="you@example.com" type="email" />
-              <Input label="Destination" placeholder="Where would you like to go?" />
-              <label className="grid gap-1.5">
-                <span className="text-sm font-semibold text-ink">Message</span>
-                <textarea
-                  rows={4}
-                  placeholder="Tell us about your trip…"
-                  className="rounded-xl border border-line px-4 py-3 text-sm outline-none focus:border-brand"
-                />
-              </label>
-              <button type="submit" className="btn btn-primary w-full">Send Message</button>
-            </form>
+            <ContactForm />
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-line h-full min-h-[420px]">
@@ -85,18 +70,5 @@ export default function ContactPage() {
         </div>
       </section>
     </>
-  );
-}
-
-function Input({ label, placeholder, type = "text" }: { label: string; placeholder: string; type?: string }) {
-  return (
-    <label className="grid gap-1.5">
-      <span className="text-sm font-semibold text-ink">{label}</span>
-      <input
-        type={type}
-        placeholder={placeholder}
-        className="rounded-xl border border-line px-4 py-3 text-sm outline-none focus:border-brand"
-      />
-    </label>
   );
 }

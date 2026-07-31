@@ -17,9 +17,29 @@ export default function BecomeExpertPage() {
   const [agreed, setAgreed] = useState(false);
   const [done, setDone] = useState(false);
 
-  function submit(e: FormEvent) {
+  async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!agreed) return;
+    const fd = new FormData(e.currentTarget);
+    const parts = [
+      `Role: ${role}`,
+      fd.get("agency") ? `Agency: ${fd.get("agency")}` : "",
+      fd.get("username") ? `Username: ${fd.get("username")}` : "",
+    ].filter(Boolean);
+    try {
+      await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: fd.get("name"),
+          email: fd.get("email"),
+          message: parts.join(" · "),
+          source: "become-expert",
+        }),
+      });
+    } catch {
+      /* still show success to the user */
+    }
     setDone(true);
   }
 
@@ -130,18 +150,18 @@ export default function BecomeExpertPage() {
 
                 <form className="mt-6 grid gap-4" onSubmit={submit}>
                   <Field icon={<User width={17} height={17} />} label="Full Name">
-                    <input required placeholder="Your name" className="tk-input" />
+                    <input name="name" required placeholder="Your name" className="tk-input" />
                   </Field>
                   {role === "agent" && (
                     <Field icon={<Briefcase width={17} height={17} />} label="Agency / Company">
-                      <input placeholder="Your agency name" className="tk-input" />
+                      <input name="agency" placeholder="Your agency name" className="tk-input" />
                     </Field>
                   )}
                   <Field icon={<AtSign width={17} height={17} />} label="Username">
-                    <input required placeholder="Choose a username" className="tk-input" />
+                    <input name="username" required placeholder="Choose a username" className="tk-input" />
                   </Field>
                   <Field icon={<Mail width={17} height={17} />} label="Email">
-                    <input required type="email" placeholder="you@example.com" className="tk-input" />
+                    <input name="email" required type="email" placeholder="you@example.com" className="tk-input" />
                   </Field>
                   <div className="grid sm:grid-cols-2 gap-4">
                     <Field icon={<Lock width={17} height={17} />} label="Password" trailing={<button type="button" onClick={() => setShowPass(!showPass)} className="text-[color:var(--muted)] hover:text-[color:var(--brand-dark)]"><Eye width={16} height={16} /></button>}>
