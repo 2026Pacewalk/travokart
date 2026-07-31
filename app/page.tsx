@@ -154,18 +154,20 @@ export default function Home() {
         <div className="section-head section-center" style={{ display: "block", textAlign: "center" }}>
           <span className="eyebrow-line">Testimonials</span>
           <h2>What Our Travelers Say</h2>
+          <p style={{ marginInline: "auto" }}>Real stories from happy travellers who explored the world with Travokart.</p>
         </div>
 
         {/* Google summary */}
         <div className="google-summary">
           <div className="gs-left">
-            <GoogleG width={40} height={40} />
+            <GoogleG width={44} height={44} />
             <div>
               <strong>Explore Travokart Vocations LLP</strong>
               <div className="gs-rate">
                 <span className="gs-score">5.0</span>
                 <span className="stars">★★★★★</span>
-                <span className="gs-count">Based on 12 reviews</span>
+                <span className="gs-badge">Excellent</span>
+                <span className="gs-count">Based on 17 Google reviews</span>
               </div>
             </div>
           </div>
