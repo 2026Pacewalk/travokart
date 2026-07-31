@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { tours, categories, categoryImage } from "@/lib/data";
+import { categoryImage } from "@/lib/data";
+import { getTours, getCategories } from "@/lib/db-content";
 import { site } from "@/lib/site";
 import { homeFaqs, testimonials, homeStats } from "@/lib/content";
 import HeroSearch from "@/components/HeroSearch";
@@ -10,9 +11,12 @@ import {
   Sparkle, Users, ArrowRight as Arr, GoogleG,
 } from "@/components/Icons";
 
-export default function Home() {
-  const featuredTours = tours.slice(0, 8);
-  const destCats = categories
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const [allTours, allCats] = await Promise.all([getTours(), getCategories()]);
+  const featuredTours = allTours.slice(0, 8);
+  const destCats = allCats
     .filter((c) => !["domestic", "international", "more-packages"].includes(c.slug) && c.count > 0)
     .slice(0, 8);
 

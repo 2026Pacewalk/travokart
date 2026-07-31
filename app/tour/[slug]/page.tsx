@@ -2,23 +2,19 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  tours,
-  tourBySlug,
   mediaUrl,
   tourImage,
   formatPrice,
   durationLabel,
   getItinerary,
-  toursInCategory,
 } from "@/lib/data";
+import { getTourBySlug, toursInCategoryDb, getTours } from "@/lib/db-content";
 import { site } from "@/lib/site";
 import PageHero from "@/components/PageHero";
 import TourCard from "@/components/TourCard";
 import { MapPin, Clock, Users, Check, XMark, Star, Phone, ArrowRight, Sparkle, Whatsapp } from "@/components/Icons";
 
-export function generateStaticParams() {
-  return tours.map((t) => ({ slug: t.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -26,7 +22,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const tour = tourBySlug(slug);
+  const tour = await getTourBySlug(slug);
   if (!tour) return { title: "Tour" };
   const desc =
     (tour.excerpt?.slice(0, 155) ||
@@ -48,7 +44,7 @@ export default async function TourPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const tour = tourBySlug(slug);
+  const tour = await getTourBySlug(slug);
   if (!tour) notFound();
 
   const price = formatPrice(tour.product_price || tour.price);
@@ -57,7 +53,7 @@ export default async function TourPage({
   const gallery = tour.gallery.slice(0, 6).map(mediaUrl);
   const place = [...new Set([tour.city, tour.state].filter(Boolean))].join(", ") || tour.destination;
   const cat = tour.categories?.[0];
-  const related = (cat ? toursInCategory(cat.slug) : tours)
+  const related = (cat ? await toursInCategoryDb(cat.slug) : await getTours())
     .filter((t) => t.slug !== tour.slug)
     .slice(0, 4);
 

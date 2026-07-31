@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { tours, categories } from "@/lib/data";
+import { getTours, getCategories } from "@/lib/db-content";
 import PageHero from "@/components/PageHero";
 import TourCard from "@/components/TourCard";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "All Tour Packages",
@@ -17,7 +19,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ToursPage() {
+export default async function ToursPage() {
+  const [tours, categories] = await Promise.all([getTours(), getCategories()]);
   const popularCats = categories.filter(
     (c) => !["domestic", "international"].includes(c.slug) && c.count > 0
   );

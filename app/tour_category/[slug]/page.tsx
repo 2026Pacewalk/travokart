@@ -1,13 +1,12 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { categories, categoryBySlug, toursInCategory, categoryImage } from "@/lib/data";
+import { categoryImage } from "@/lib/data";
+import { getCategoryBySlug, toursInCategoryDb } from "@/lib/db-content";
 import PageHero from "@/components/PageHero";
 import TourCard from "@/components/TourCard";
 import { MapPin } from "@/components/Icons";
 
-export function generateStaticParams() {
-  return categories.map((c) => ({ slug: c.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -15,9 +14,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const cat = categoryBySlug(slug);
+  const cat = await getCategoryBySlug(slug);
   if (!cat) return { title: "Category" };
-  const count = toursInCategory(slug).length;
+  const count = cat.count;
   const desc =
     cat.description ||
     `Explore ${count}+ handpicked ${cat.name} tour packages with Travokart — comfortable, affordable and unforgettable holidays.`;
@@ -38,10 +37,10 @@ export default async function CategoryPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const cat = categoryBySlug(slug);
+  const cat = await getCategoryBySlug(slug);
   if (!cat) notFound();
 
-  const catTours = toursInCategory(slug);
+  const catTours = await toursInCategoryDb(slug);
 
   return (
     <>
