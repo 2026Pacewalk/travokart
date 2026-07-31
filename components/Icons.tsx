@@ -94,6 +94,12 @@ export const GoogleG = (p: P) => (
     <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.6l6.6 5.6C41.9 35.9 44 30.6 44 24c0-1.3-.1-2.3-.4-3.5z" />
   </svg>
 );
+export const Pencil = (p: P) => (
+  <svg {...base(p)}><path d="M12 20h9" /><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
+);
+export const Plus = (p: P) => (
+  <svg {...base(p)}><path d="M12 5v14M5 12h14" /></svg>
+);
 export const Heart = (p: P) => (
   <svg {...base(p)}><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8Z" /></svg>
 );

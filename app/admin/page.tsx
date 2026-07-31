@@ -3,7 +3,8 @@ import { desc, eq, sql } from "drizzle-orm";
 import { requireAdmin } from "@/lib/admin-session";
 import { ensureDb } from "@/db/ensure";
 import { leads as leadsTable } from "@/db/schema";
-import { tours as toursData, blogs as blogsData } from "@/lib/data";
+import { tours as toursData } from "@/lib/data";
+import { getAllBlogRows } from "@/lib/db-content";
 import AdminShell from "@/components/admin/AdminShell";
 import { Users, Newspaper, Compass, Sparkle, ArrowRight, Phone, Mail } from "@/components/Icons";
 
@@ -19,12 +20,13 @@ export default async function AdminDashboard() {
     .from(leadsTable)
     .where(eq(leadsTable.status, "new"));
   const recent = await db.select().from(leadsTable).orderBy(desc(leadsTable.id)).limit(6);
+  const blogCount = (await getAllBlogRows()).length;
 
   const stats = [
     { label: "Total Leads", value: total, Icon: Users, bg: "linear-gradient(135deg,var(--brand),var(--brand-dark))" },
     { label: "New Leads", value: fresh, Icon: Sparkle, bg: "linear-gradient(135deg,#fa3e3e,#c92a2a)" },
     { label: "Tour Packages", value: toursData.length, Icon: Compass, bg: "linear-gradient(135deg,var(--sky),var(--sky-dark))" },
-    { label: "Blog Posts", value: blogsData.length, Icon: Newspaper, bg: "linear-gradient(135deg,#12b886,#0c8a63)" },
+    { label: "Blog Posts", value: blogCount, Icon: Newspaper, bg: "linear-gradient(135deg,#12b886,#0c8a63)" },
   ];
 
   return (

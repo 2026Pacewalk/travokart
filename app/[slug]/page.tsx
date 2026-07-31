@@ -1,14 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { blogs, blogBySlug, mediaUrl, rewriteHtml, readTime, formatDate, authorName } from "@/lib/data";
+import { mediaUrl, rewriteHtml, readTime, formatDate, authorName } from "@/lib/data";
+import { getBlogBySlug, getBlogs } from "@/lib/db-content";
 import { site } from "@/lib/site";
 import BlogCard from "@/components/BlogCard";
 import { Calendar, Clock, ArrowRight, Chevron, Facebook, Whatsapp, Mail, Sparkle } from "@/components/Icons";
 
-export function generateStaticParams() {
-  return blogs.map((b) => ({ slug: b.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -16,7 +15,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const blog = blogBySlug(slug);
+  const blog = await getBlogBySlug(slug);
   if (!blog) return { title: "Not Found" };
   const desc = (blog.excerpt || "").replace(/\[&hellip;\]|\[…\]/g, "").slice(0, 160).trim();
   const img = mediaUrl(blog.featured_image);
@@ -44,10 +43,11 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const blog = blogBySlug(slug);
+  const blog = await getBlogBySlug(slug);
   if (!blog) notFound();
 
-  const related = blogs.filter((b) => b.slug !== blog.slug && b.featured_image).slice(0, 3);
+  const allBlogs = await getBlogs();
+  const related = allBlogs.filter((b) => b.slug !== blog.slug && b.featured_image).slice(0, 3);
   const url = `https://travokart.com/${blog.slug}`;
   const cat = blog.categories?.[0]?.name;
   const shares = [

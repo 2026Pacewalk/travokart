@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { blogsWithImages, mediaUrl, readTime, formatDate, authorName } from "@/lib/data";
+import { mediaUrl, readTime, formatDate, authorName } from "@/lib/data";
+import { getBlogsWithImages } from "@/lib/db-content";
 import PageHero from "@/components/PageHero";
 import BlogsExplorer from "@/components/BlogsExplorer";
 import { Calendar, Clock, User, ArrowRight } from "@/components/Icons";
@@ -18,8 +19,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogsPage() {
-  const posts = blogsWithImages();
+export const dynamic = "force-dynamic";
+
+export default async function BlogsPage() {
+  const posts = await getBlogsWithImages();
   const featured = posts[0];
   const rest = posts.slice(1);
 

@@ -3,6 +3,7 @@ import { env } from "cloudflare:workers";
 import { getDb } from "./index";
 import { admins } from "./schema";
 import { hashPassword } from "../lib/auth";
+import { seedContent } from "./seed";
 
 const DDL: string[] = [
   `CREATE TABLE IF NOT EXISTS admins (
@@ -90,6 +91,9 @@ async function init(): Promise<void> {
     const passwordHash = await hashPassword(password);
     await db.insert(admins).values({ email, passwordHash, name: "Travokart Admin" });
   }
+
+  // Seed existing static content into the DB (idempotent — only when empty).
+  await seedContent(db);
 }
 
 /** Ensure schema + seed exist, then return the drizzle db. Runs once per worker instance. */
