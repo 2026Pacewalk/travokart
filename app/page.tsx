@@ -181,22 +181,24 @@ export default function Home() {
           </a>
         </div>
 
-        {/* Real Google reviews */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
-          {testimonials.map((r) => (
-            <article className="review-card gr-card" key={r.name}>
-              <div className="gr-head">
-                <span className="review-avatar">{r.name.charAt(0)}</span>
-                <div className="gr-person">
-                  <strong>{r.name}</strong>
-                  <small>{r.when}</small>
+        {/* Real Google reviews — auto-scrolling marquee (pauses on hover) */}
+        <div className="reviews-marquee mt-8">
+          <div className="reviews-track">
+            {[...testimonials, ...testimonials].map((r, i) => (
+              <article className="review-card gr-card" key={i} aria-hidden={i >= testimonials.length}>
+                <div className="gr-head">
+                  <span className="review-avatar">{r.name.charAt(0)}</span>
+                  <div className="gr-person">
+                    <strong>{r.name}</strong>
+                    <small>{r.when}</small>
+                  </div>
+                  <GoogleG width={20} height={20} className="gr-g" />
                 </div>
-                <GoogleG width={20} height={20} className="gr-g" />
-              </div>
-              <div className="stars" style={{ marginTop: 10 }}>★★★★★</div>
-              <p>{r.text}</p>
-            </article>
-          ))}
+                <div className="stars" style={{ marginTop: 10 }}>★★★★★</div>
+                <p>{r.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
