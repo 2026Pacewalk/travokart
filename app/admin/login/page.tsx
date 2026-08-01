@@ -1,11 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Lock, Mail, Eye, ArrowRight, Users, Newspaper, Compass, Shield, Star } from "@/components/Icons";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
@@ -24,8 +22,8 @@ export default function AdminLoginPage() {
       });
       const data = (await res.json()) as { ok: boolean; error?: string };
       if (data.ok) {
-        router.push("/admin");
-        router.refresh();
+        window.location.href = "/admin";
+        return;
       } else setError(data.error || "Login failed.");
     } catch {
       setError("Something went wrong. Please try again.");

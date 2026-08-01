@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Users, Newspaper, Compass, Sparkle, ArrowRight } from "@/components/Icons";
 
@@ -24,14 +24,12 @@ export default function AdminShell({
   actions?: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const router = useRouter();
   const [busy, setBusy] = useState(false);
 
   async function logout() {
     setBusy(true);
     await fetch("/api/admin/logout", { method: "POST" });
-    router.push("/admin/login");
-    router.refresh();
+    window.location.href = "/admin/login";
   }
 
   const isActive = (href: string) => (href === "/admin" ? pathname === href : pathname.startsWith(href));
