@@ -1,0 +1,10 @@
+node_modules
+.git
+.wrangler
+.sites-runtime
+.vinext/fonts
+dist
+.next
+out
+*.log
+npm-debug.log*
