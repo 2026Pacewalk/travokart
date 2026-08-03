@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { BlogRow } from "@/db/schema";
+import GalleryManager from "./GalleryManager";
 
 const CATEGORIES = ["Travel", "Guide", "Tips", "Destinations", "News"];
 
@@ -19,7 +20,6 @@ export default function BlogForm({
   const [title, setTitle] = useState(initial?.title ?? "");
   const [slug, setSlug] = useState(initial?.slug ?? "");
   const [slugEdited, setSlugEdited] = useState(Boolean(initial?.slug));
-  const [image, setImage] = useState(initial?.image ?? "");
 
   return (
     <form action={action} className="grid lg:grid-cols-[1fr_330px] gap-5 items-start">
@@ -81,16 +81,10 @@ export default function BlogForm({
           <button type="submit" className="btn btn-primary w-full">Save Post</button>
         </div>
 
-        <div className="admin-card p-6 grid gap-3">
-          <Field label="Featured Image URL">
-            <input name="image" value={image} onChange={(e) => setImage(e.target.value)} placeholder="/media/2025/09/blog.jpg" className="admin-input" />
-          </Field>
-          {image ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={image} alt="Preview" className="w-full h-40 object-cover rounded-xl border border-[color:var(--line)]" />
-          ) : (
-            <div className="w-full h-40 rounded-xl border border-dashed border-[color:var(--line)] grid place-items-center text-[color:var(--muted)] text-sm">Image preview</div>
-          )}
+        <div className="admin-card p-6 grid gap-2">
+          <span className="text-[13px] font-bold text-[color:var(--ink)]">Featured Image</span>
+          <p className="text-[12px] text-[color:var(--muted)] -mt-1 mb-1">Upload or drag &amp; drop. The first image is used as the featured image.</p>
+          <GalleryManager initial={initial?.image ? [initial.image] : []} />
         </div>
       </div>
     </form>
