@@ -9,10 +9,10 @@ export const site = {
   address: "#1, Level-2, SCO-215, Sector-14, Panchkula, Haryana",
   copyright: "© 2025 Travokart Tour and Travel. Designed by Pacewalk",
   socials: {
-    facebook: "https://facebook.com/",
-    instagram: "https://instagram.com/",
+    facebook: "https://www.facebook.com/travokart/",
+    instagram: "https://www.instagram.com/travokartz/",
+    pinterest: "https://in.pinterest.com/travokart/",
     whatsapp: "https://wa.me/919872889763",
-    youtube: "https://youtube.com/",
   },
 };
 

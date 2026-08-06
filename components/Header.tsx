@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { site, mainNav, footerDomestic, footerInternational } from "@/lib/site";
 import {
   Phone, Mail, Menu, Close, Chevron, Shield, Check, Star, Search, ArrowRight,
-  Facebook, Instagram, Whatsapp, Youtube,
+  Facebook, Instagram, Whatsapp, Pinterest,
   Info, Compass, Image as ImageIcon, Newspaper, MapPin, Plane,
 } from "./Icons";
 
@@ -21,10 +21,10 @@ const NAV_ICONS: Record<string, React.ComponentType<{ width?: number; height?: n
 
 const POPULAR = ["Himachal", "Bali", "Dubai", "Goa", "Maldives", "Thailand", "Kerala", "Ladakh"];
 const SOCIALS = [
-  { I: Facebook, href: "#", label: "Facebook" },
-  { I: Instagram, href: "#", label: "Instagram" },
+  { I: Facebook, href: site.socials.facebook, label: "Facebook" },
+  { I: Instagram, href: site.socials.instagram, label: "Instagram" },
+  { I: Pinterest, href: site.socials.pinterest, label: "Pinterest" },
   { I: Whatsapp, href: site.socials.whatsapp, label: "Whatsapp" },
-  { I: Youtube, href: "#", label: "Youtube" },
 ];
 
 export default function Header() {
@@ -63,7 +63,7 @@ export default function Header() {
             <span className="hidden xl:inline-flex items-center gap-1.5"><Check width={13} height={13} /> Secure Booking</span>
             <span className="inline-flex items-center gap-2 pl-4 ml-1 border-l border-white/15">
               {SOCIALS.map(({ I, href, label }) => (
-                <a key={label} href={href} className="hover:text-brand transition-colors" aria-label={label}><I width={14} height={14} /></a>
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hover:text-brand transition-colors" aria-label={label}><I width={14} height={14} /></a>
               ))}
             </span>
           </div>

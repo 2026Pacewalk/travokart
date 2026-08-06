@@ -40,29 +40,57 @@ export default function AboutPage() {
           <img src="/media/2025/12/bali-1.jpg" alt="Bali holiday package by Travokart" className="rounded-2xl h-72 w-full object-cover mt-8 shadow-[var(--shadow-card)]" />
         </div>
         <div>
-          <SectionHeading
-            eyebrow="Who We Are"
-            title="About Explore Travokart Vocations LLP Travels"
-          />
+          <span className="inline-flex items-center gap-2 text-brand-dark font-bold text-xs uppercase tracking-widest mb-3">
+            <span className="w-6 h-0.5 bg-brand rounded" />
+            Who We Are
+          </span>
+          <h2 className="text-[19px] sm:text-[28px] font-extrabold text-ink leading-tight tracking-tight">
+            About <span className="whitespace-nowrap">Explore Travokart Vocations LLP</span>
+          </h2>
           <div className="text-muted leading-relaxed mt-4 space-y-4">
             <p>
-              Explore Travokart Vocations LLP is a customer-centric travel company serving
-              Tricity &amp; North India, committed to delivering seamless, memorable, and
-              well-organized travel experiences. With a strong focus on quality, reliability, and
-              customer satisfaction, we specialize in offering thoughtfully curated domestic and
-              international tour packages designed to suit diverse travel needs. Whether it&apos;s
-              leisure travel, family vacations, romantic getaways, or group tours, we ensure every
-              journey is planned with precision, comfort, and care.
+              <strong className="text-ink">Explore Travokart Vocations LLP</strong> is a
+              professionally managed travel and tourism company headquartered in Panchkula, serving
+              travellers across Tricity and North India. Since our inception, we have been driven by
+              a single commitment — to make quality travel accessible, transparent, and truly
+              memorable. We combine local expertise with a global network of trusted partners to
+              deliver holidays that consistently exceed expectations.
             </p>
             <p>
-              Backed by an experienced team of travel professionals, Explore Travokart Vocations
-              LLP collaborates with trusted partners to provide end-to-end travel solutions,
-              including accommodation, sightseeing, transportation, and customized itineraries. Our
-              approach is rooted in transparency, competitive pricing, and personalized service,
-              ensuring our clients enjoy stress-free travel experiences from planning to
-              completion. At Explore Travokart Vocations LLP, we strive to turn every trip into a
-              rewarding and unforgettable experience.
+              As a full-service travel organisation, we design and operate a comprehensive portfolio
+              of domestic and international tour packages — spanning leisure holidays, family
+              vacations, honeymoons, corporate group tours, and bespoke itineraries. Every programme
+              is engineered around our clients&apos; preferences and budgets, backed by end-to-end
+              solutions covering accommodation, transfers, sightseeing, and on-ground support.
             </p>
+            <p>
+              Our philosophy is built on <strong className="text-ink">integrity, reliability, and
+              customer-first service</strong>. From the first enquiry to the final farewell, our
+              experienced travel consultants ensure a seamless, stress-free journey — so that every
+              trip with Travokart becomes an experience our clients are proud to recommend.
+            </p>
+          </div>
+
+          {/* Mission & Vision */}
+          <div className="grid sm:grid-cols-2 gap-4 mt-6">
+            <div className="bg-brand-soft/60 border border-brand-soft rounded-2xl p-5">
+              <h3 className="font-bold text-ink mb-1.5 flex items-center gap-2">
+                <Sparkle width={17} height={17} className="text-brand-dark" /> Our Mission
+              </h3>
+              <p className="text-muted text-sm leading-relaxed">
+                To craft thoughtfully curated, value-driven travel experiences that turn every
+                journey into a lasting memory.
+              </p>
+            </div>
+            <div className="bg-sky-soft/60 border border-sky-soft rounded-2xl p-5">
+              <h3 className="font-bold text-ink mb-1.5 flex items-center gap-2">
+                <Plane width={17} height={17} className="text-sky-dark" /> Our Vision
+              </h3>
+              <p className="text-muted text-sm leading-relaxed">
+                To be North India&apos;s most trusted travel partner, recognised for service
+                excellence and genuine care for every traveller.
+              </p>
+            </div>
           </div>
           <div className="grid sm:grid-cols-2 gap-3 mt-6">
             {[

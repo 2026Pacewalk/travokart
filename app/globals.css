@@ -192,6 +192,7 @@ button, input, select { font: inherit; }
 .drawer-socials a[data-net="Facebook"]:hover { background: #1877f2; }
 .drawer-socials a[data-net="Instagram"]:hover { background: radial-gradient(circle at 30% 110%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
 .drawer-socials a[data-net="Whatsapp"]:hover { background: #25d366; }
+.drawer-socials a[data-net="Pinterest"]:hover { background: #e60023; }
 .drawer-socials a[data-net="Youtube"]:hover { background: #ff0000; }
 
 /* ---- Buttons ---- */
@@ -407,13 +408,16 @@ button, input, select { font: inherit; }
 .socials a[data-net="Facebook"]:hover { background:#1877f2; }
 .socials a[data-net="Instagram"]:hover { background: radial-gradient(circle at 30% 110%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%); }
 .socials a[data-net="Whatsapp"]:hover { background:#25d366; }
+.socials a[data-net="Pinterest"]:hover { background:#e60023; }
 .socials a[data-net="Youtube"]:hover { background:#ff0000; }
 
 /* Payment strip */
 .footer-pay { border-top: 1px solid rgba(255,255,255,.1); }
 .footer-pay .shell { padding: 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .footer-pay .pay-label { font-size: 12.5px; font-weight: 700; color: rgba(255,255,255,.6); }
-.pay-badges { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+.pay-badges { display: flex; gap: 7px; flex-wrap: nowrap; align-items: center; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+.pay-badges::-webkit-scrollbar { display: none; }
+.pay-badge { flex: 0 0 auto; }
 .pay-badge { display: inline-flex; align-items: center; justify-content: center; height: 27px; padding: 0 8px; border-radius: 6px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,.15); transition: transform .16s ease, box-shadow .16s ease; }
 .pay-badge:hover { transform: translateY(-2px); box-shadow: 0 5px 12px rgba(0,0,0,.22); }
 .pay-badge svg { height: 14px; width: auto; display: block; }
@@ -425,7 +429,9 @@ button, input, select { font: inherit; }
 .footer-legal a { color: rgba(255,255,255,.6); transition: color .16s; }
 .footer-legal a:hover { color: var(--brand); }
 @media (max-width: 640px) {
-  .footer-bottom .shell { justify-content: center; text-align: center; }
+  .footer-bottom .shell { flex-direction: column; justify-content: center; text-align: center; gap: 14px; }
+  .footer-bottom .shell > span { order: 2; }        /* © / Developed by PACEWALK shows last */
+  .footer-bottom .footer-legal { order: 1; }
   .footer-pay .shell { justify-content: center; }
 }
 
@@ -711,6 +717,7 @@ button, input, select { font: inherit; }
   .has-drop .drop { display: none; }
   .menu-button { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: var(--brand-soft); color: var(--brand-dark); border: 0; order: 3; }
   .nav-actions .sign-btn { display: none; }
+  .nav-actions .book-button { display: none; }
   .hero-inner { min-height: 620px; padding-top: 40px; }
   .hero-copy { width: 100%; }
   .offer-card { display: none; }
@@ -724,7 +731,9 @@ button, input, select { font: inherit; }
   .reviews-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px; }
   .footer-cta-inner { padding: 28px; }
-  .footer-cta form { min-width: 0; width: 100%; }
+  .footer-cta form { min-width: 0; width: 100%; flex-direction: column; gap: 8px; padding: 8px; }
+  .footer-cta form input { width: 100%; padding: 14px 16px; font-size: 15px; }
+  .footer-cta form .btn { width: 100%; justify-content: center; padding: 13px 18px; }
   .trust-strip { grid-template-columns: 1fr 1fr; gap: 16px; }
   .search-overlay .chips-row { flex-wrap: wrap; }
 }

@@ -17,7 +17,7 @@ export default function SectionHeading({
   center?: boolean;
 }) {
   return (
-    <div className={`flex flex-wrap items-end justify-between gap-4 ${center ? "flex-col items-center text-center" : ""}`}>
+    <div className={`flex flex-wrap justify-between gap-4 ${center ? "flex-col items-center text-center" : "items-end"}`}>
       <div className={center ? "max-w-2xl" : "max-w-2xl"}>
         {eyebrow && (
           <span className="inline-flex items-center gap-2 text-brand-dark font-bold text-xs uppercase tracking-widest mb-3">

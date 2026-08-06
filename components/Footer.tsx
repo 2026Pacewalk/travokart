@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 import Link from "next/link";
 import { site, footerDomestic, footerInternational, mainNav } from "@/lib/site";
 import {
-  Phone, Mail, MapPin, Facebook, Instagram, Whatsapp, Youtube,
+  Phone, Mail, MapPin, Facebook, Instagram, Whatsapp, Pinterest,
   Shield, Check, Star, Sparkle, ArrowRight, Chevron,
 } from "./Icons";
 import { PAYMENT_LOGOS } from "./PaymentIcons";
@@ -12,8 +12,8 @@ import { PAYMENT_LOGOS } from "./PaymentIcons";
 const SOCIALS = [
   { I: Facebook, href: site.socials.facebook, label: "Facebook" },
   { I: Instagram, href: site.socials.instagram, label: "Instagram" },
+  { I: Pinterest, href: site.socials.pinterest, label: "Pinterest" },
   { I: Whatsapp, href: site.socials.whatsapp, label: "Whatsapp" },
-  { I: Youtube, href: site.socials.youtube, label: "Youtube" },
 ];
 
 export default function Footer() {
