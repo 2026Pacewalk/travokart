@@ -152,7 +152,9 @@ export default function Footer() {
         <div className="footer-bottom">
           <div className="shell">
             <span>
-              © 2025 Travokart Tour and Travel. Developed by{" "}
+              © 2025 Travokart Tour and Travel.{" "}
+              <br className="sm:hidden" />
+              Developed by{" "}
               <a href="https://pacewalk.com" target="_blank" rel="noopener noreferrer" className="font-bold text-[color:var(--brand)] hover:underline">
                 PACEWALK
               </a>
