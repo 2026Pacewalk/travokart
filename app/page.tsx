@@ -26,7 +26,7 @@ export default async function Home() {
       <section className="hero">
         <div className="hero-bg">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/2025/12/bora-bora-pics.jpg" alt="Bora Bora tropical island — explore exclusive tour packages with Travokart" />
+          <img src="/media/2025/12/hero-island-hd.jpg" alt="Aerial view of a lush tropical island surrounded by turquoise lagoon — explore exclusive tour packages with Travokart" />
         </div>
         <div className="hero-overlay" />
         <div className="shell hero-inner">
