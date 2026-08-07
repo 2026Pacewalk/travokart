@@ -77,7 +77,7 @@ const orgJsonLd = {
   priceRange: "₹₹",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "#1, Level-2, SCO-215, Sector-14",
+    streetAddress: "Office No - 09, Level-2, SCO-215, Sector-14",
     addressLocality: "Panchkula",
     addressRegion: "Haryana",
     postalCode: "134113",
@@ -86,9 +86,9 @@ const orgJsonLd = {
   areaServed: ["India", "Tricity", "North India"],
   aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "17" },
   sameAs: [
-    "https://facebook.com/",
-    "https://instagram.com/",
-    "https://youtube.com/",
+    "https://www.facebook.com/travokartz/",
+    "https://www.instagram.com/travokartz/",
+    "https://in.pinterest.com/travokart/",
   ],
 };
 

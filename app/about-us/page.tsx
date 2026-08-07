@@ -49,25 +49,30 @@ export default function AboutPage() {
           </h2>
           <div className="text-muted leading-relaxed mt-4 space-y-4">
             <p>
-              <strong className="text-ink">Explore Travokart Vocations LLP</strong> is a
-              professionally managed travel and tourism company headquartered in Panchkula, serving
-              travellers across Tricity and North India. Since our inception, we have been driven by
-              a single commitment — to make quality travel accessible, transparent, and truly
-              memorable. We combine local expertise with a global network of trusted partners to
-              deliver holidays that consistently exceed expectations.
+              <strong className="text-ink">Explore Travokart Vocations LLP</strong> is a trusted
+              travel company based in Panchkula, dedicated to creating unforgettable travel
+              experiences across India and around the world. With a passion for travel and a
+              commitment to exceptional service, we specialize in planning seamless domestic and
+              international holidays tailored to every traveler&apos;s preferences, budget, and
+              lifestyle.
             </p>
             <p>
-              As a full-service travel organisation, we design and operate a comprehensive portfolio
-              of domestic and international tour packages — spanning leisure holidays, family
-              vacations, honeymoons, corporate group tours, and bespoke itineraries. Every programme
-              is engineered around our clients&apos; preferences and budgets, backed by end-to-end
-              solutions covering accommodation, transfers, sightseeing, and on-ground support.
+              Whether you&apos;re planning a relaxing family vacation, a romantic honeymoon, an
+              adventurous getaway, a corporate tour, or a customized holiday, our experienced travel
+              experts ensure every detail is carefully managed. From flight bookings and hotel
+              reservations to sightseeing, transportation, visa assistance, and complete itinerary
+              planning, we provide end-to-end travel solutions under one roof.
             </p>
             <p>
-              Our philosophy is built on <strong className="text-ink">integrity, reliability, and
-              customer-first service</strong>. From the first enquiry to the final farewell, our
-              experienced travel consultants ensure a seamless, stress-free journey — so that every
-              trip with Travokart becomes an experience our clients are proud to recommend.
+              At Travokart, we believe every journey should be stress-free, enjoyable, and filled
+              with lasting memories. Our customer-first approach, transparent pricing, reliable
+              travel partners, and personalized service have earned the trust of travelers across
+              Panchkula, Chandigarh, Mohali, and North India.
+            </p>
+            <p>
+              We continuously strive to deliver memorable holidays by combining local expertise,
+              global travel knowledge, and carefully curated travel experiences that match the
+              unique expectations of every customer.
             </p>
           </div>
 
@@ -78,8 +83,9 @@ export default function AboutPage() {
                 <Sparkle width={17} height={17} className="text-brand-dark" /> Our Mission
               </h3>
               <p className="text-muted text-sm leading-relaxed">
-                To craft thoughtfully curated, value-driven travel experiences that turn every
-                journey into a lasting memory.
+                To inspire people to explore the world by delivering personalized, affordable, and
+                memorable travel experiences through exceptional service, carefully curated holiday
+                packages, and complete travel solutions.
               </p>
             </div>
             <div className="bg-sky-soft/60 border border-sky-soft rounded-2xl p-5">
@@ -87,17 +93,23 @@ export default function AboutPage() {
                 <Plane width={17} height={17} className="text-sky-dark" /> Our Vision
               </h3>
               <p className="text-muted text-sm leading-relaxed">
-                To be North India&apos;s most trusted travel partner, recognised for service
-                excellence and genuine care for every traveller.
+                To become one of India&apos;s most trusted and preferred travel companies by setting
+                new standards in customer satisfaction, innovation, transparency, and unforgettable
+                travel experiences.
               </p>
             </div>
           </div>
-          <div className="grid sm:grid-cols-2 gap-3 mt-6">
+          <p className="font-bold text-ink text-base mt-7 mb-1">Why Choose Travokart?</p>
+          <div className="grid sm:grid-cols-2 gap-3 mt-2">
             {[
-              "Domestic & International Packages",
-              "End-to-End Travel Solutions",
-              "Transparent & Competitive Pricing",
-              "Customized Itineraries",
+              "Domestic & International Holiday Packages",
+              "Customized Travel Itineraries",
+              "Flight, Hotel & Visa Assistance",
+              "Family, Honeymoon & Group Tours",
+              "Corporate & Business Travel Solutions",
+              "Transparent Pricing with No Hidden Costs",
+              "Experienced Travel Consultants",
+              "Dedicated Customer Support Throughout Your Journey",
             ].map((t) => (
               <div key={t} className="flex items-center gap-2.5">
                 <span className="grid place-items-center w-7 h-7 rounded-full bg-sky-soft text-sky-dark shrink-0">

@@ -6,10 +6,10 @@ export const site = {
   phoneHref: "tel:+919872889763",
   email: "info@travokart.com",
   emailHref: "mailto:info@travokart.com",
-  address: "#1, Level-2, SCO-215, Sector-14, Panchkula, Haryana",
+  address: "Office No - 09, Level-2, SCO-215, Sector-14, Panchkula, Haryana - 134113",
   copyright: "© 2025 Travokart Tour and Travel. Designed by Pacewalk",
   socials: {
-    facebook: "https://www.facebook.com/travokart/",
+    facebook: "https://www.facebook.com/travokartz/",
     instagram: "https://www.instagram.com/travokartz/",
     pinterest: "https://in.pinterest.com/travokart/",
     whatsapp: "https://wa.me/919872889763",
