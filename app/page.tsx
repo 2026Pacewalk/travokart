@@ -44,9 +44,9 @@ export default async function Home() {
             </div>
           </div>
           <div className="offer-card">
-            <span>✦ Special Offer</span>
+            <span>✦ Monsoon Offer</span>
             <small>Get up to</small>
-            <strong>30% OFF</strong>
+            <strong>20% OFF</strong>
             <small>on holiday packages</small>
           </div>
         </div>
