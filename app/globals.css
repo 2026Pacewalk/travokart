@@ -55,7 +55,7 @@ button, input, select { font: inherit; }
 /* ---- Nav ---- */
 .nav-wrap { background: rgba(255,255,255,.97); position: sticky; top: 0; z-index: 50; box-shadow: 0 3px 16px rgba(20,40,80,.07); backdrop-filter: blur(6px); }
 .nav-inner { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
-.brand-logo { height: 44px; width: auto; }
+.brand-logo { height: 56px; width: auto; }
 .nav-links { display: flex; align-items: center; gap: 26px; font-size: 14px; font-weight: 600; }
 .nav-links > a, .nav-links > .has-drop > a { position: relative; white-space: nowrap; transition: color .18s; }
 .nav-links a:hover, .nav-links a.active { color: var(--brand-dark); }
@@ -711,6 +711,7 @@ button, input, select { font: inherit; }
   .topbar-inner .tb-left { gap: 16px; overflow-x: auto; white-space: nowrap; }
   .topbar-inner .tb-right { display: none; }
   .nav-inner { height: 66px; }
+  .brand-logo { height: 48px; }
   .nav-links { position: absolute; top: 66px; left: 0; right: 0; background: #fff; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 12px 18px 22px; box-shadow: 0 16px 28px rgba(20,40,80,.13); }
   .nav-links.open { display: flex; }
   .nav-links > a, .nav-links > .has-drop { height: 46px; display: flex; align-items: center; border-bottom: 1px solid #eff2f7; }
