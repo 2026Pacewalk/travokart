@@ -4,6 +4,7 @@ import { getTours, getCategories } from "@/lib/db-content";
 import { site } from "@/lib/site";
 import { homeFaqs, testimonials, homeStats } from "@/lib/content";
 import HeroSearch from "@/components/HeroSearch";
+import OfferPopup from "@/components/OfferPopup";
 import TourCard from "@/components/TourCard";
 import Faq from "@/components/Faq";
 import {
@@ -22,6 +23,8 @@ export default async function Home() {
 
   return (
     <>
+      <OfferPopup />
+
       {/* ---------------- HERO ---------------- */}
       <section className="hero">
         <div className="hero-bg">
@@ -42,12 +45,6 @@ export default async function Home() {
               <div className="avatar-stack"><span>C</span><span>M</span><span>S</span><span>A</span></div>
               <span>Trusted by 100+ happy travellers · 5.0 ★</span>
             </div>
-          </div>
-          <div className="offer-card">
-            <span>✦ Monsoon Offer</span>
-            <small>Get up to</small>
-            <strong>20% OFF</strong>
-            <small>on holiday packages</small>
           </div>
         </div>
       </section>
