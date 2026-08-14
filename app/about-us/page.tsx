@@ -5,7 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { whyChoose, homeStats, homeFaqs } from "@/lib/content";
 import { site } from "@/lib/site";
 import Faq from "@/components/Faq";
-import { Sparkle, Calendar, Plane, Shield, Check, ArrowRight } from "@/components/Icons";
+import { Sparkle, Calendar, Plane, Shield, Check, ArrowRight, Star } from "@/components/Icons";
 
 const featureIcons = { sparkle: Sparkle, calendar: Calendar, plane: Plane, shield: Shield };
 
@@ -32,12 +32,53 @@ export default function AboutPage() {
         crumbs={[{ label: "About Us" }]}
       />
 
-      <section className="container-tk py-16 grid lg:grid-cols-2 gap-12 items-center">
-        <div className="grid grid-cols-2 gap-4">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/2025/12/thailand-2.jpg" alt="Thailand tour package by Travokart" className="rounded-2xl h-72 w-full object-cover shadow-[var(--shadow-card)]" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/media/2025/12/bali-1.jpg" alt="Bali holiday package by Travokart" className="rounded-2xl h-72 w-full object-cover mt-8 shadow-[var(--shadow-card)]" />
+      <section className="container-tk py-16 grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center" style={{ overflowX: "clip" }}>
+        {/* ---- Creative image collage ---- */}
+        <div className="about-collage relative mx-auto w-full max-w-[460px] lg:mb-6">
+          {/* decorative glows */}
+          <span className="pointer-events-none absolute -top-8 -left-8 w-40 h-40 rounded-full bg-brand-soft blur-3xl opacity-70" aria-hidden />
+          <span className="pointer-events-none absolute -bottom-10 -right-8 w-48 h-48 rounded-full bg-sky-soft blur-3xl opacity-60" aria-hidden />
+          {/* dotted texture */}
+          <span
+            className="pointer-events-none absolute -top-5 -right-5 w-24 h-24 opacity-60"
+            aria-hidden
+            style={{
+              backgroundImage: "radial-gradient(var(--brand) 1.6px, transparent 1.6px)",
+              backgroundSize: "12px 12px",
+            }}
+          />
+
+          {/* main portrait image */}
+          <div className="relative rounded-[28px] overflow-hidden shadow-[0_24px_60px_rgba(6,24,59,.22)] ring-1 ring-black/5">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/media/2025/12/about-travokart.jpg"
+              alt="Longtail boats at a tropical island beach at sunset — Travokart holidays"
+              className="w-full h-[430px] sm:h-[520px] object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            {/* rating pill */}
+            <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-white/95 backdrop-blur px-3 py-1.5 rounded-full text-[12px] font-extrabold text-ink shadow-lg">
+              <Star width={14} height={14} className="text-brand" /> 5.0 · 100+ Happy Travellers
+            </span>
+          </div>
+
+          {/* floating secondary image */}
+          <div className="hidden sm:block absolute -bottom-9 -left-7 w-40 rounded-2xl overflow-hidden border-4 border-white shadow-xl rotate-[-4deg]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/media/2025/12/bali-1.jpg" alt="Bali holiday package by Travokart" className="h-28 w-full object-cover" />
+          </div>
+
+          {/* floating stat card */}
+          <div className="absolute -bottom-7 right-3 sm:right-5 bg-white rounded-2xl pl-4 pr-5 py-3.5 shadow-xl flex items-center gap-3">
+            <span className="grid place-items-center w-11 h-11 rounded-xl bg-brand-soft text-brand-dark shrink-0">
+              <Plane width={22} height={22} />
+            </span>
+            <span className="leading-tight">
+              <span className="block text-xl font-extrabold text-ink">57+</span>
+              <span className="block text-[11px] font-semibold text-muted uppercase tracking-wide">Destinations</span>
+            </span>
+          </div>
         </div>
         <div>
           <span className="inline-flex items-center gap-2 text-brand-dark font-bold text-xs uppercase tracking-widest mb-3">
