@@ -5,7 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import { whyChoose, homeStats, homeFaqs } from "@/lib/content";
 import { site } from "@/lib/site";
 import Faq from "@/components/Faq";
-import { Sparkle, Calendar, Plane, Shield, Check, ArrowRight, Star } from "@/components/Icons";
+import { Sparkle, Calendar, Plane, Shield, Check, ArrowRight, Star, Phone, Whatsapp } from "@/components/Icons";
 
 const featureIcons = { sparkle: Sparkle, calendar: Calendar, plane: Plane, shield: Shield };
 
@@ -195,15 +195,55 @@ export default function AboutPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-cloud">
-        <div className="container-tk py-16 grid lg:grid-cols-[0.85fr_1.15fr] gap-10">
-          <div>
-            <SectionHeading
-              eyebrow="FAQ"
-              title="Frequently Asked Questions"
-              subtitle="All the information you require on Travokart travel services, destinations, and trips."
-            />
+      <section className="bg-cloud relative" style={{ overflowX: "clip" }}>
+        {/* decorative glows */}
+        <span className="pointer-events-none absolute -top-16 -left-20 w-80 h-80 rounded-full bg-brand-soft blur-3xl opacity-50" aria-hidden />
+        <span className="pointer-events-none absolute -bottom-24 right-0 w-96 h-96 rounded-full bg-sky-soft blur-3xl opacity-40" aria-hidden />
+
+        <div className="container-tk py-16 lg:py-20 grid lg:grid-cols-[0.82fr_1.18fr] gap-10 lg:gap-14 items-start relative">
+          {/* Left sticky panel */}
+          <div className="lg:sticky lg:top-28 self-start">
+            <span className="inline-flex items-center gap-2 text-brand-dark font-bold text-xs uppercase tracking-widest mb-3">
+              <span className="w-6 h-0.5 bg-brand rounded" />
+              FAQ
+            </span>
+            <h2 className="text-[26px] sm:text-[32px] font-extrabold text-ink leading-tight tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-muted mt-3 leading-relaxed max-w-md">
+              All the information you require on Travokart travel services, destinations, and trips —
+              answered by our team.
+            </p>
+
+            {/* Support card */}
+            <div className="mt-8 rounded-3xl bg-ink text-white p-7 relative overflow-hidden max-w-md">
+              <span className="pointer-events-none absolute -top-10 -right-10 w-40 h-40 rounded-full bg-brand/25 blur-2xl" aria-hidden />
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 bg-white/12 border border-white/20 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-widest">
+                  <Sparkle width={13} height={13} /> We&apos;re here to help
+                </span>
+                <h3 className="text-xl font-extrabold mt-4">Still have questions?</h3>
+                <p className="text-white/70 text-sm leading-relaxed mt-2">
+                  Can&apos;t find the answer you&apos;re looking for? Our travel experts are just a
+                  message away and happy to help you plan.
+                </p>
+                <div className="flex flex-wrap gap-3 mt-6">
+                  <a href={site.phoneHref} className="inline-flex items-center gap-2 bg-brand hover:bg-brand-dark transition-colors text-white font-bold text-sm px-4 py-2.5 rounded-xl">
+                    <Phone width={16} height={16} /> Call Now
+                  </a>
+                  <a
+                    href="https://wa.me/919872889763?text=Hi%20Travokart!%20I%20have%20a%20question%20about%20your%20tour%20packages."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-[#25d366] hover:brightness-95 transition text-white font-bold text-sm px-4 py-2.5 rounded-xl"
+                  >
+                    <Whatsapp width={16} height={16} /> WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
+
           <Faq items={homeFaqs} />
         </div>
       </section>
