@@ -32,9 +32,9 @@ export default function AboutPage() {
         crumbs={[{ label: "About Us" }]}
       />
 
-      <section className="container-tk py-16 grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-center" style={{ overflowX: "clip" }}>
+      <section className="container-tk py-16 grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-16 items-start" style={{ overflowX: "clip" }}>
         {/* ---- Creative image collage ---- */}
-        <div className="about-collage relative mx-auto w-full max-w-[460px] lg:mb-6">
+        <div className="about-collage relative mx-auto w-full max-w-[460px] lg:sticky lg:top-28">
           {/* decorative glows */}
           <span className="pointer-events-none absolute -top-8 -left-8 w-40 h-40 rounded-full bg-brand-soft blur-3xl opacity-70" aria-hidden />
           <span className="pointer-events-none absolute -bottom-10 -right-8 w-48 h-48 rounded-full bg-sky-soft blur-3xl opacity-60" aria-hidden />
@@ -54,7 +54,7 @@ export default function AboutPage() {
             <img
               src="/media/2025/12/about-travokart.jpg"
               alt="Longtail boats at a tropical island beach at sunset — Travokart holidays"
-              className="w-full h-[430px] sm:h-[520px] object-cover"
+              className="w-full h-[430px] sm:h-[520px] lg:h-[560px] object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             {/* rating pill */}
