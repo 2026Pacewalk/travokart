@@ -46,6 +46,12 @@ export default async function Home() {
               <span>Trusted by 100+ happy travellers · 5.0 ★</span>
             </div>
           </div>
+          <div className="offer-card">
+            <span>🎉 Festival Season Offer</span>
+            <small>Get up to</small>
+            <strong>25% OFF</strong>
+            <small>on holiday packages</small>
+          </div>
         </div>
       </section>
 
