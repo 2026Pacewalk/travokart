@@ -225,10 +225,18 @@ button, input, select { font: inherit; }
 .avatar-stack { display: flex; padding-left: 8px; }
 .avatar-stack span { width: 32px; height: 32px; margin-left: -8px; border: 2px solid #fff; border-radius: 50%; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 12px; background: linear-gradient(135deg,#ff9e68,#e07d1a); }
 .avatar-stack span:nth-child(2){ background: linear-gradient(135deg,#27aae1,#1b6a9c); } .avatar-stack span:nth-child(3){ background: linear-gradient(135deg,#f3a44d,#b74264); } .avatar-stack span:nth-child(4){ background: linear-gradient(135deg,#736bdb,#222f7a); }
-.offer-card { width: 186px; padding: 22px 16px; background: rgba(255,255,255,.96); border-radius: 20px; box-shadow: 0 18px 50px rgba(6,24,59,.28); text-align: center; display: flex; flex-direction: column; gap: 5px; transform: rotate(2deg); }
-.offer-card span { color: var(--accent); font-size: 11px; font-weight: 800; }
-.offer-card small { font-size: 12px; color: #4f5b6c; font-weight: 700; }
-.offer-card strong { font-size: 32px; color: var(--brand-dark); letter-spacing: -1px; }
+/* ---- Festival hanging offer tag (hero) ---- */
+.hero-offer-tag { display: block; width: 232px; max-width: 34vw; line-height: 0; transform-origin: 50% 4%; animation: tag-swing 3.6s ease-in-out infinite; filter: drop-shadow(0 16px 26px rgba(6,24,59,.35)); will-change: transform; }
+.hero-offer-tag img { width: 100%; height: auto; display: block; }
+.hero-offer-tag:hover { animation-play-state: paused; }
+@keyframes tag-swing {
+  0%   { transform: rotate(-6deg); }
+  50%  { transform: rotate(6deg); }
+  100% { transform: rotate(-6deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-offer-tag { animation: none; transform: rotate(0deg); }
+}
 
 /* ---- Offer popup (modal) ---- */
 .offer-pop { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; }
@@ -761,6 +769,7 @@ button, input, select { font: inherit; }
   .hero-inner { min-height: 620px; padding-top: 40px; }
   .hero-copy { width: 100%; }
   .offer-card { display: none; }
+  .hero-offer-tag { display: none; }
   .search-wrap { margin-top: -60px; }
   .search-fields { grid-template-columns: 1fr 1fr; }
   .search-fields label:nth-of-type(1) { grid-column: 1/-1; }

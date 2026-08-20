@@ -46,12 +46,10 @@ export default async function Home() {
               <span>Trusted by 100+ happy travellers · 5.0 ★</span>
             </div>
           </div>
-          <div className="offer-card">
-            <span>🎉 Festival Season Offer</span>
-            <small>Get up to</small>
-            <strong>25% OFF</strong>
-            <small>on holiday packages</small>
-          </div>
+          <Link href="/tours" className="hero-offer-tag" aria-label="Festival Season Offer — get up to 25% OFF on holiday packages">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/media/2025/12/festival-offer-25.png" alt="Festival Season Offer — get up to 25% OFF on holiday packages" />
+          </Link>
         </div>
       </section>
 
