@@ -1,33 +1,12 @@
-# Travokart — production stack for a Docker VPS (Hostinger KVM).
-# Traefik terminates HTTPS (Let's Encrypt) and proxies to the app.
-# App data (D1 database + R2 uploads) persists in the `app_state` volume.
+# Travokart — app service for a Hostinger "Docker + Traefik" VPS.
+# Hostinger already runs Traefik (host network, certresolver "letsencrypt",
+# entrypoints web/websecure). We just publish our app and let that Traefik
+# route travokart.com to it over HTTPS. App data (D1 + R2 uploads) persists
+# in the `app_state` volume.
 #
-# Deploy:  cd deploy && cp .env.example .env && nano .env  (set values)
+# Deploy:  cd deploy && cp .env.example .env && nano .env
 #          docker compose up -d --build
 services:
-  traefik:
-    image: traefik:v3.1
-    container_name: travokart_traefik
-    restart: unless-stopped
-    command:
-      - --providers.docker=true
-      - --providers.docker.exposedbydefault=false
-      - --entrypoints.web.address=:80
-      - --entrypoints.web.http.redirections.entrypoint.to=websecure
-      - --entrypoints.web.http.redirections.entrypoint.scheme=https
-      - --entrypoints.websecure.address=:443
-      - --certificatesresolvers.le.acme.email=${ACME_EMAIL}
-      - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
-      - --certificatesresolvers.le.acme.tlschallenge=true
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - traefik_le:/letsencrypt
-    networks:
-      - web
-
   app:
     build:
       context: ..
@@ -46,13 +25,13 @@ services:
       - web
     labels:
       - traefik.enable=true
+      - traefik.docker.network=travokart_web
       - traefik.http.routers.travokart.rule=Host(`${DOMAIN}`) || Host(`www.${DOMAIN}`)
       - traefik.http.routers.travokart.entrypoints=websecure
-      - traefik.http.routers.travokart.tls.certresolver=le
+      - traefik.http.routers.travokart.tls.certresolver=letsencrypt
       - traefik.http.services.travokart.loadbalancer.server.port=8080
 
 volumes:
-  traefik_le:
   app_state:
 
 networks:
