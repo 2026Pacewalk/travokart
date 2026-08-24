@@ -46,7 +46,15 @@ export default defineConfig(async () => {
   return {
     server: {
       host: "0.0.0.0",
-      allowedHosts: ["terminal.local", ".up.railway.app", ".railway.app"],
+      allowedHosts: [
+        "terminal.local",
+        ".up.railway.app",
+        ".railway.app",
+        "travokart.com",
+        "www.travokart.com",
+        ".hstgr.cloud",
+        "localhost",
+      ],
       ...(isCodexSeatbeltSandbox
         ? { watch: { useFsEvents: false, usePolling: true } }
         : {}),
