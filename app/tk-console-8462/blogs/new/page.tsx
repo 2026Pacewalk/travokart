@@ -13,7 +13,7 @@ export default async function NewBlogPage() {
     <AdminShell
       email={email}
       title="New Blog Post"
-      actions={<Link href="/admin/blogs" className="text-[13px] font-semibold text-[color:var(--muted)] inline-flex items-center gap-1"><ArrowRight width={14} height={14} className="rotate-180" /> Back</Link>}
+      actions={<Link href="/tk-console-8462/blogs" className="text-[13px] font-semibold text-[color:var(--muted)] inline-flex items-center gap-1"><ArrowRight width={14} height={14} className="rotate-180" /> Back</Link>}
     >
       <BlogForm action={createBlog} />
     </AdminShell>

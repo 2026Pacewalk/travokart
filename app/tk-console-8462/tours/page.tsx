@@ -19,7 +19,7 @@ export default async function AdminToursPage() {
       email={email}
       title="Tour Packages"
       actions={
-        <Link href="/admin/tours/new" className="btn btn-primary py-2 px-4 text-[13px]">
+        <Link href="/tk-console-8462/tours/new" className="btn btn-primary py-2 px-4 text-[13px]">
           <Plus width={16} height={16} /> New Tour
         </Link>
       }
@@ -60,7 +60,7 @@ export default async function AdminToursPage() {
                     <td><span className={`badge ${t.status === "published" ? "badge-closed" : "badge-contacted"}`}>{t.status}</span></td>
                     <td>
                       <div className="flex gap-2">
-                        <Link href={`/admin/tours/${t.id}/edit`} className="icon-btn" aria-label="Edit" style={{ color: "var(--sky-dark)" }}>
+                        <Link href={`/tk-console-8462/tours/${t.id}/edit`} className="icon-btn" aria-label="Edit" style={{ color: "var(--sky-dark)" }}>
                           <Pencil width={15} height={15} />
                         </Link>
                         <DeleteButton action={deleteTour.bind(null, t.id)} confirmText={`Delete "${t.title}"?`} />

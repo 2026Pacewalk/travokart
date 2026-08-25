@@ -17,7 +17,7 @@ export default async function AdminBlogsPage() {
       email={email}
       title="Blogs"
       actions={
-        <Link href="/admin/blogs/new" className="btn btn-primary py-2 px-4 text-[13px]">
+        <Link href="/tk-console-8462/blogs/new" className="btn btn-primary py-2 px-4 text-[13px]">
           <Plus width={16} height={16} /> New Post
         </Link>
       }
@@ -57,7 +57,7 @@ export default async function AdminBlogsPage() {
                     <td className="whitespace-nowrap text-[color:var(--muted)]">{b.date}</td>
                     <td>
                       <div className="flex gap-2">
-                        <Link href={`/admin/blogs/${b.id}/edit`} className="icon-btn" aria-label="Edit" style={{ color: "var(--sky-dark)", borderColor: "var(--line)" }}>
+                        <Link href={`/tk-console-8462/blogs/${b.id}/edit`} className="icon-btn" aria-label="Edit" style={{ color: "var(--sky-dark)", borderColor: "var(--line)" }}>
                           <Pencil width={15} height={15} />
                         </Link>
                         <DeleteButton action={deleteBlog.bind(null, b.id)} confirmText={`Delete "${b.title}"?`} />

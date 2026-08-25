@@ -11,6 +11,6 @@ export async function getAdminEmail(): Promise<string | null> {
 /** Guard for protected admin pages — redirects to login if not authenticated. */
 export async function requireAdmin(): Promise<string> {
   const email = await getAdminEmail();
-  if (!email) redirect("/admin/login");
+  if (!email) redirect("/tk-console-8462/login");
   return email;
 }

@@ -6,10 +6,10 @@ import { useState } from "react";
 import { Users, Newspaper, Compass, Sparkle, ArrowRight } from "@/components/Icons";
 
 const NAV = [
-  { href: "/admin", label: "Dashboard", Icon: Sparkle },
-  { href: "/admin/leads", label: "Leads", Icon: Users },
-  { href: "/admin/blogs", label: "Blogs", Icon: Newspaper },
-  { href: "/admin/tours", label: "Tours", Icon: Compass },
+  { href: "/tk-console-8462", label: "Dashboard", Icon: Sparkle },
+  { href: "/tk-console-8462/leads", label: "Leads", Icon: Users },
+  { href: "/tk-console-8462/blogs", label: "Blogs", Icon: Newspaper },
+  { href: "/tk-console-8462/tours", label: "Tours", Icon: Compass },
 ];
 
 export default function AdminShell({
@@ -29,10 +29,10 @@ export default function AdminShell({
   async function logout() {
     setBusy(true);
     await fetch("/api/admin/logout", { method: "POST" });
-    window.location.href = "/admin/login";
+    window.location.href = "/tk-console-8462/login";
   }
 
-  const isActive = (href: string) => (href === "/admin" ? pathname === href : pathname.startsWith(href));
+  const isActive = (href: string) => (href === "/tk-console-8462" ? pathname === href : pathname.startsWith(href));
 
   return (
     <div className="admin-wrap">

@@ -33,9 +33,9 @@ export async function createBlog(fd: FormData) {
   const db = await ensureDb();
   await db.insert(blogs).values(v).onConflictDoNothing();
   revalidatePath("/blogs");
-  revalidatePath("/admin/blogs");
-  revalidatePath("/admin");
-  redirect("/admin/blogs");
+  revalidatePath("/tk-console-8462/blogs");
+  revalidatePath("/tk-console-8462");
+  redirect("/tk-console-8462/blogs");
 }
 
 export async function updateBlog(id: number, fd: FormData) {
@@ -45,8 +45,8 @@ export async function updateBlog(id: number, fd: FormData) {
   await db.update(blogs).set({ ...v, updatedAt: new Date().toISOString() }).where(eq(blogs.id, id));
   revalidatePath("/blogs");
   revalidatePath(`/${v.slug}`);
-  revalidatePath("/admin/blogs");
-  redirect("/admin/blogs");
+  revalidatePath("/tk-console-8462/blogs");
+  redirect("/tk-console-8462/blogs");
 }
 
 export async function deleteBlog(id: number) {
@@ -54,6 +54,6 @@ export async function deleteBlog(id: number) {
   const db = await ensureDb();
   await db.delete(blogs).where(eq(blogs.id, id));
   revalidatePath("/blogs");
-  revalidatePath("/admin/blogs");
-  revalidatePath("/admin");
+  revalidatePath("/tk-console-8462/blogs");
+  revalidatePath("/tk-console-8462");
 }

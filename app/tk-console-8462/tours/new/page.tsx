@@ -15,7 +15,7 @@ export default async function NewTourPage() {
     <AdminShell
       email={email}
       title="New Tour Package"
-      actions={<Link href="/admin/tours" className="text-[13px] font-semibold text-[color:var(--muted)] inline-flex items-center gap-1"><ArrowRight width={14} height={14} className="rotate-180" /> Back</Link>}
+      actions={<Link href="/tk-console-8462/tours" className="text-[13px] font-semibold text-[color:var(--muted)] inline-flex items-center gap-1"><ArrowRight width={14} height={14} className="rotate-180" /> Back</Link>}
     >
       <TourForm action={createTour} categories={cats} />
     </AdminShell>

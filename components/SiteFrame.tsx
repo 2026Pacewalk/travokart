@@ -7,7 +7,7 @@ import WhatsAppButton from "./WhatsAppButton";
 
 export default function SiteFrame({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const isAdmin = pathname?.startsWith("/admin");
+  const isAdmin = pathname?.startsWith("/tk-console-8462");
 
   if (isAdmin) return <>{children}</>;
 

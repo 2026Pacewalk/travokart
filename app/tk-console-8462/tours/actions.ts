@@ -58,9 +58,9 @@ export async function createTour(fd: FormData) {
   await db.insert(tours).values(v).onConflictDoNothing();
   revalidatePath("/tours");
   revalidatePath("/");
-  revalidatePath("/admin/tours");
-  revalidatePath("/admin");
-  redirect("/admin/tours");
+  revalidatePath("/tk-console-8462/tours");
+  revalidatePath("/tk-console-8462");
+  redirect("/tk-console-8462/tours");
 }
 
 export async function updateTour(id: number, fd: FormData) {
@@ -75,8 +75,8 @@ export async function updateTour(id: number, fd: FormData) {
   revalidatePath("/tours");
   revalidatePath(`/tour/${v.slug}`);
   revalidatePath(`/tour_category/${v.categorySlug}`);
-  revalidatePath("/admin/tours");
-  redirect("/admin/tours");
+  revalidatePath("/tk-console-8462/tours");
+  redirect("/tk-console-8462/tours");
 }
 
 export async function deleteTour(id: number) {
@@ -85,6 +85,6 @@ export async function deleteTour(id: number) {
   await db.delete(tours).where(eq(tours.id, id));
   revalidatePath("/tours");
   revalidatePath("/");
-  revalidatePath("/admin/tours");
-  revalidatePath("/admin");
+  revalidatePath("/tk-console-8462/tours");
+  revalidatePath("/tk-console-8462");
 }

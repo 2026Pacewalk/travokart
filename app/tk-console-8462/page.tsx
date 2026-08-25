@@ -46,7 +46,7 @@ export default async function AdminDashboard() {
       <div className="admin-card mt-6">
         <div className="admin-card-head">
           <h2>Recent Leads</h2>
-          <Link href="/admin/leads" className="text-[13px] font-bold text-[color:var(--brand-dark)] inline-flex items-center gap-1.5">
+          <Link href="/tk-console-8462/leads" className="text-[13px] font-bold text-[color:var(--brand-dark)] inline-flex items-center gap-1.5">
             View all <ArrowRight width={14} height={14} />
           </Link>
         </div>

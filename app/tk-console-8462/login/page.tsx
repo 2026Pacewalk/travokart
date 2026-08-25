@@ -22,7 +22,7 @@ export default function AdminLoginPage() {
       });
       const data = (await res.json()) as { ok: boolean; error?: string };
       if (data.ok) {
-        window.location.href = "/admin";
+        window.location.href = "/tk-console-8462";
         return;
       } else setError(data.error || "Login failed.");
     } catch {
